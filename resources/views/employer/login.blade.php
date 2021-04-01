@@ -12,7 +12,7 @@
             <li>Get new resume automatically by Resume Alert tool</li>
         </ul>
         <p class="h6 my-4 font-weight-bold">Start with us today!</p>
-        @if (Route::has('register'))
+        @if (Route::has('employer.register'))
             <a class="btn btn-outline-success" href="{{ route("employer.register") }}">Sign Up</a>
         @endif
     </div>
@@ -20,9 +20,9 @@
         <p class="h4 font-weight-bold text-danger">Sign In</p>
         <div class="pt-1 bg-danger mb-3 w-75"></div>
         <p class="h6 mt-3">Already have FindJobs account? Please sign in here:</p>
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('employer.login') }}">
             @csrf
-
+            <input type="hidden" name="user_type" value="2">
             <div class="form-group row mt-3">
                 <label for="password" class="col-md-2 col-form-label">Email</label>
                 <div class="col-md-6">

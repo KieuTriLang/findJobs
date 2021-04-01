@@ -42,11 +42,11 @@
                     </li>
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="{{ route('login') }}">Sign In</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employee.viewLogIn') }}">Sign In</a>
                     </li>
-                    @if (Route::has('register'))
+                    @if (Route::has('employee.register'))
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="{{ route('register') }}">Sign Up</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employee.register') }}">Sign Up</a>
                     </li>
                     @endif
                     @else
@@ -65,12 +65,12 @@
                                 <i class="fas fa-tasks mr-2"></i>
                                 Resume Management
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="dropdown-item" href="{{ route('employee.logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                                                     <i class="fas fa-sign-out-alt mr-2"></i>
                                 {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('employee.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>

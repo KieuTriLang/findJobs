@@ -9,10 +9,11 @@
             </div>
             <div class="col-8 offset-2 pt-1 bg-warning mb-3"></div>
             <div class="d-flex justify-content-end mb-4">
-                <a href="{{ route('login') }}">Or already have Findjobs account? Please sign in here:</a>
+                <a href="{{ route('employer.login') }}">Or already have Findjobs account? Please sign in here:</a>
             </div>
-            <form method="POST" action="">
+            <form method="POST" action="{{ route('employer.store') }}" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="user_type" value="2">
                 {{-- account-info  --}}
                 <div class="d-flex justify-content-start mb-2">
                     <p class="h4 font-weight-bold text-primary">Account Infomation</p>
@@ -20,7 +21,7 @@
                 <div class="form-group row">
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email"
+                            name="email" value="{{ old('email') }}" autocomplete="email"
                             placeholder="Company email is first priority of approval">
 
                         @error('email')
@@ -30,8 +31,8 @@
                         @enderror
                     </div>
                     <div class="col-md-6">
-                        <input id="email-confirm" type="email" class="form-control" name="email_confirmation" required
-                            autocomplete="new-password" placeholder="Confirm email">
+                        <input id="email-confirm" type="email" class="form-control" name="email_confirmation"
+                            autocomplete="new-email" placeholder="Confirm email">
                     </div>
                 </div>
 
@@ -39,8 +40,8 @@
 
                     <div class="col-md-6">
                         <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
-                            autocomplete="new-password" placeholder="Email">
+                            class="form-control @error('password') is-invalid @enderror" name="password"
+                            autocomplete="new-password" placeholder="Password">
 
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -50,33 +51,38 @@
                     </div>
                     <div class="col-md-6">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password" placeholder="Confirm password">
+                            autocomplete="new-password" placeholder="Confirm password">
                     </div>
                 </div>
                 {{-- company-info  --}}
                 <div class="d-flex justify-content-start">
-                    <p class="h4 font-weight-bold text-primary">Account Infomation</p>
+                    <p class="h4 font-weight-bold text-primary">Company Infomation</p>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label for="company-name">Company Name</label>
-                        <input type="text" name="company-name" placeholder="Your company name" id="company-name"
-                            class="form-control">
+                        <input type="text" name="company_name" placeholder="Your company name" id="company-name"
+                            class="form-control @error('company_name') is-invalid @enderror">
+                        @error('company_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
                         <label for="company-size">Company Size</label>
-                        <select name="company-size" id="company-size" class="form-control">
-                            <option value="1">Select</option>
-                            <option value="2">Less Than 10</option>
-                            <option value="3">10 - 24</option>
-                            <option value="4">25 - 99</option>
-                            <option value="5">100 - 499</option>
-                            <option value="6">500 - 999</option>
-                            <option value="7">1000 -4999</option>
-                            <option value="8">5000 - 9999</option>
-                            <option value="9">10000 - 19999</option>
-                            <option value="10">20000 - 49999</option>
-                            <option value="11">More than 50000</option>
+                        <select name="company_size" id="company-size" class="form-control">
+                            <option value="">--Select--</option>
+                            <option value="1" selected="selected">Less Than 10</option>
+                            <option value="2">10 - 24</option>
+                            <option value="3">25 - 99</option>
+                            <option value="4">100 - 499</option>
+                            <option value="5">500 - 999</option>
+                            <option value="6">1000 -4999</option>
+                            <option value="7">5000 - 9999</option>
+                            <option value="8">10000 - 19999</option>
+                            <option value="9">20000 - 49999</option>
+                            <option value="10">More than 50000</option>
                         </select>
                     </div>
                 </div>
@@ -88,27 +94,32 @@
                     <div class="col-md-6">
                         <label for="website">Website</label>
                         <input type="text" name="website" placeholder="Website Location" id="website"
-                            class="form-control">
+                            class="form-control @error ('website') is-invalid @enderror">
+                        @error('website')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
                         <label for="company-summary">Company Summary</label>
-                        <textarea name="company-summary" rows="5" placeholder="Company Summary" id="company-summary"
+                        <textarea name="company_summary" rows="5" placeholder="Company Summary" id="company-summary"
                             class="form-control"></textarea>
                     </div>
                     <div class="col-md-6">
                         <label for="" class="text-white d-block">upload logo</label>
-                        <div class="d-flex flex-column justify-content-center align-items-center">
-                            <img src="https://www.findjobs.vn/htdocs/themes/employers/images/logo.jpg" alt="">
-                            <button class="btn btn-outline-success"
+                        <div class="d-flex flex-column justify-content-center align-items-center ">
+                            <img src="https://www.findjobs.vn/htdocs/themes/employers/images/logo.jpg" alt=""
+                                id="output">
+                            <span class="btn btn-outline-success mt-2"
                                 onclick="document.getElementById('company-logo').click()">
                                 Upload Logo
-                                <input type="file" name="company-logo" id="company-logo"
+                                <input onchange="preview(event)" type="file" name="company_logo" id="company-logo"
                                     style="color:transparent;display:none;">
-                            </button>
+                            </span>
                         </div>
-
                     </div>
                 </div>
                 {{-- contact Infomation --}}
@@ -117,22 +128,45 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <input id="contact-name" type="text" class="form-control" name="contact-name" required
+                        <input id="contact-name" type="text"
+                            class="form-control @error ('contact_name') is-invalid @enderror" name="contact_name"
                             autocomplete="new-password" placeholder="Contact Name">
+                        @error('contact_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
-                        <input id="postion" type="text" class="form-control" name="position" required
-                            autocomplete="new-password" placeholder="Position">
+                        <input id="position" type="text" class="form-control @error ('position') is-invalid @enderror"
+                            name="position" autocomplete="new-password" placeholder="Position">
+                        @error('position')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <input id="company-address" type="text" class="form-control" name="company-address" required
+                        <input id="company-address" type="text"
+                            class="form-control @error ('company_address') is-invalid @enderror" name="company_address"
                             autocomplete="new-password" placeholder="Company Address">
+                        @error('company_address')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     <div class="col-md-6">
-                        <input id="phone" type="text" class="form-control" name="phone" required
+                        <input id="company-phone" type="text"
+                            class="form-control @error ('company_phone') is-invalid @enderror" name="company_phone"
                             autocomplete="new-password" placeholder="Phone">
+                        @error('company_phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group row">
@@ -205,7 +239,7 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <select name="country_id" id="country_id" class="form-control" required="" data-bv-field="country_id">
+                        <select name="country_id" id="country_id" class="form-control" data-bv-field="country_id">
                             <option value="">-- Country ---</option>
                             <option value="13">America</option>
                             <option value="18">Angola</option>
@@ -251,4 +285,18 @@
         </div>
     </div>
 </div>
+@endsection
+@section('additional-Scripts')
+<script type="text/javascript">
+    var preview = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.style.width="100px";
+        output.style.height="100px";
+        output.style.objectFit="cover";
+        output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
 @endsection

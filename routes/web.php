@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterControllerER;
+use App\Http\Controllers\RegisterControllerEE;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,29 +16,31 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Auth::routes();
 
-Route::get('/', function () {
-    return view('employee/welcome');
-})->name('employee.home');
 
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::Class,'employeeHome'])->name('employee.home');
 
 Route::get('find-job', function () {
     return view('employee/findJob');
 })->name('findJob');
 
+Route::get('sign-in', [LoginController::class,'viewEmployee'])->name('employee.viewLogIn');
+Route::post('sign-in', [LoginController::class, 'login'])->name('employee.login');
+Route::post('/', [LoginController::class, 'logoutEmployee'])->name('employee.logout');
 
+Route::get('sign-up', [RegisterControllerEE::class, 'create'])->name('employee.register');
+Route::post('sign-up', [RegisterControllerEE::class, 'store'])->name('employee.store');
+
+
+
+
+
+
+// route employers
 Route::group(['prefix' => 'employer'], function () {
-
-    Route::get('/', function () {
-        return view('employer/home');
-    })->name('employer.home');
+    Route::get('/',[HomeController::Class,'employerHome'])->name('employer.home');
+    Route::get('/home', [HomeController::class, 'employer']);
 
     Route::get('find-resume', function () {
         return view('employer/findResume');
@@ -45,13 +50,10 @@ Route::group(['prefix' => 'employer'], function () {
         return view('employer/FAQ');
     })->name('employer.faq');
 
-    Route::get('sign-in', function () {
-        return view('employer/login');
-    })->name('employer.login');
+    Route::get('sign-in', [LoginController::class, 'viewEmployer'])->name('employer.viewLogIn');
+    Route::post('sign-in', [LoginController::class, 'login'])->name('employer.login');
+    Route::post('/', [LoginController::class, 'logoutEmployer'])->name('employer.logout');
 
-    Route::get('sign-up', function () {
-        return view('employer/register');
-    })->name('employer.register');
-
+    Route::get('sign-up', [RegisterControllerER::class, 'create'])->name('employer.register');
+    Route::post('sign-up', [RegisterControllerER::class, 'store'])->name('employer.store');
 });
-

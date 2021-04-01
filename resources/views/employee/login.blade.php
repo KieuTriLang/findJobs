@@ -10,9 +10,9 @@
         <a href="#" class="btn btn-secondary m-2"><i class="fab fa-linkedin-in mr-2"></i>Linkedin</a>
         <a href="#" class="btn btn-danger m-2"><i class="fab fa-google-plus-g mr-2"></i>Google</a>
         <p class="h6 mt-3">Or already have FindJobs account? Please sign in here:</p>
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('employee.login') }}">
             @csrf
-
+            <input type="hidden" name="user_type" value="1">
             <div class="form-group row mt-3">
                 <label for="password" class="col-md-2 col-form-label">Email</label>
                 <div class="col-md-6">
@@ -81,8 +81,8 @@
             <li>Get newest jobs automatically by using the Job Alert tool</li>
         </ul>
         <p class="h6 my-4 font-weight-bold">Start finding your dream jobs today!</p>
-        @if (Route::has('register'))
-            <a class="btn btn-outline-success" href="{{ route("register") }}">Sign Up</a>
+        @if (Route::has('employee.register'))
+        <a class="btn btn-outline-success" href="{{ route("employee.register") }}">Sign Up</a>
         @endif
     </div>
 </div>

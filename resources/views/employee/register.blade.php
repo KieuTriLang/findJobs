@@ -9,11 +9,11 @@
             </div>
             <div class="col-8 offset-2 pt-1 bg-warning mb-3"></div>
             <div class="d-flex justify-content-end mb-4">
-                <a href="{{ route('login') }}">Or already have Findjobs account? Please sign in here:</a>
+                <a href="{{ route('employee.login') }}">Or already have Findjobs account? Please sign in here:</a>
             </div>
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('employee.register') }}">
                 @csrf
-
+                <input type="hidden" name="user_type" value="1">
                 <div class="form-group row">
                     <label for="name" class="col-md-3 offset-md-2 col-form-label">{{ __('Your Name') }}</label>
 
@@ -78,7 +78,8 @@
                     </div>
                 </div>
                 <div class="form-group text-center m-4">
-                    <p class="text-secondary">By choosing to Register, I have read and agreed to FindJobs's Privacy Policy and Terms of use</p>
+                    <p class="text-secondary">By choosing to Register, I have read and agreed to FindJobs's Privacy
+                        Policy and Terms of use</p>
                 </div>
             </form>
         </div>

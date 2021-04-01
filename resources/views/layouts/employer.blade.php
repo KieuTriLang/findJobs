@@ -19,7 +19,7 @@
     <div class="container-fluid m-0 p-0 sticky-top bg-dark">
         <a href="{{ route('employee.home') }}" class="btn btn-outline-warning font-weight-bold p-1 col-md-6 offset-md-3 col-4 offset-4">Jobseeker <span class="d-md-inline d-none">: Find Job or Post Resume</span></a>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark py-0">
-            <a class="navbar-brand ml-md-5 pt-2 " href="{{ url('/') }}">
+            <a class="navbar-brand ml-md-5 pt-2 " href="{{ route('employer.home') }}">
                 <h2><span class="text-primary font-weight-bold">Find</span><span
                         class="text-danger font-weight-bold">Jobs</span><span class="h6">employer</span></h2>
             </a>
@@ -42,9 +42,9 @@
                     </li>
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="{{ route('employer.login') }}">Sign In</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employer.viewLogIn') }}">Sign In</a>
                     </li>
-                    @if (Route::has('register'))
+                    @if (Route::has('employer.register'))
                     <li class="nav-item">
                         <a class="nav-link font-weight-bold" href="{{ route('employer.register') }}">Sign Up</a>
                     </li>
@@ -65,12 +65,13 @@
                                 <i class="fas fa-tasks mr-2"></i>
                                 Jobs Management
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="dropdown-item" href="{{ route('employer.logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                                    <i class="fas fa-sign-out-alt mr-2"></i>
+                                <i class="fas fa-sign-out-alt mr-2"></i>
                                 {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('employer.logout') }}" method="POST"
+                                style="display: none;">
                                 @csrf
                             </form>
                         </div>
