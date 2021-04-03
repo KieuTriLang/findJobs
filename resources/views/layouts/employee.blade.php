@@ -17,7 +17,9 @@
 
 <body>
     <div class="container-fluid m-0 p-0 sticky-top bg-dark">
-        <a href="{{ route('employer.home') }}" class="btn btn-outline-warning font-weight-bold p-1 col-md-6 offset-md-3 col-4 offset-4">Recruiter <span class="d-md-inline d-none">: Post Job or Find Talent</span></a>
+        <a href="{{ route('employer.home') }}"
+            class="btn btn-outline-warning font-weight-bold p-1 col-md-6 offset-md-3 col-4 offset-4">Recruiter <span
+                class="d-md-inline d-none">: Post Job or Find Talent</span></a>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark py-0">
             <a class="navbar-brand ml-md-5 pt-2 " href="{{ url('/') }}">
                 <h2><span class="text-primary font-weight-bold">Find</span><span
@@ -67,10 +69,11 @@
                             </a>
                             <a class="dropdown-item" href="{{ route('employee.logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                                    <i class="fas fa-sign-out-alt mr-2"></i>
+                                <i class="fas fa-sign-out-alt mr-2"></i>
                                 {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('employee.logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('employee.logout') }}" method="POST"
+                                style="display: none;">
                                 @csrf
                             </form>
                         </div>
