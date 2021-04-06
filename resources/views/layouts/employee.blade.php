@@ -40,7 +40,7 @@
                         <a class="nav-link font-weight-bold" href="#">POST RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">FAQ</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employee.faq') }}">FAQ</a>
                     </li>
                     @guest
                     <li class="nav-item">

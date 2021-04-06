@@ -1,0 +1,70 @@
+.bg-img-faq {
+    background-image: url('https://timviec365.vn/pictures/images/ung-tuyen-la-gi.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.change-content-faq {
+    color: white;
+}
+
+.change-content-faq a:hover {
+    color: #03abff;
+}
+
+.change-content-faq[aria-expanded="true"] .fa-chevron-down {
+    transform: rotate(180deg);
+    transition: 0.35s;
+}
+.change-content-faq[aria-expanded="false"] .fa-chevron-down{
+    transition: 0.35s;
+}
+
+@media only screen and (max-width: 280px) {
+    .title-faq, .content-faq, .guide-faq, .document-faq {
+        font-size: 80%!important;
+        transition: 0.35s;
+
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .title-faq, .content-faq, .guide-faq, .document-faq {
+        font-size: 90%!important;
+        transition: 0.5s;
+
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .title-faq, .content-faq, .guide-faq, .document-faq {
+        font-size:100%!important;
+        transition: 0.5s;
+    }
+}
+
+.content-faq {
+    color: white;
+}
+
+.content-faq a:hover {
+    color: #03abff!important;
+}
+
+.title-faq {
+    color: #ff3c3cdb !important;
+}
+
+.bg-title-faq a:hover {
+    text-decoration: none;
+}
+
+.bg-title-faq {
+    background-color: #21252982 !important;
+}
+
+.card {
+    color: white;
+    background-color: #0000006e;
+    border: 1px solid rgba(0, 0, 0, .125)
+}
