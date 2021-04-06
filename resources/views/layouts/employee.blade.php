@@ -37,7 +37,7 @@
                         <a class="nav-link font-weight-bold" href="{{ route('findJob') }}">FIND JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">POST RESUME</a>
+                        <a class="nav-link font-weight-bold" href="#">CREATE RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
                         <a class="nav-link font-weight-bold" href="#">FAQ</a>
@@ -63,7 +63,7 @@
                                 <i class="fas fa-user-circle mr-2"></i>
                                 Account Infomation
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a href="{{ route('resumeManagement') }}" class="dropdown-item">
                                 <i class="fas fa-tasks mr-2"></i>
                                 Resume Management
                             </a>

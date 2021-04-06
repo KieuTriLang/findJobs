@@ -25,6 +25,14 @@ Route::get('find-job', function () {
     return view('employee/findJob');
 })->name('findJob');
 
+Route::get('resume-management',function () {
+    return view('employee/resumeManagement/showResume');
+})->name('resumeManagement');
+Route::get('create-resume',function () {
+    return view('employee/resumeManagement/createResume');
+})->name('createResume');
+
+
 Route::get('sign-in', [LoginController::class,'viewEmployee'])->name('employee.viewLogIn');
 Route::post('sign-in', [LoginController::class, 'login'])->name('employee.login');
 Route::post('/', [LoginController::class, 'logoutEmployee'])->name('employee.logout');
