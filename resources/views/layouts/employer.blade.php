@@ -35,7 +35,7 @@
                         <a class="nav-link font-weight-bold" href="#">POST JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">FIND RESUME</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employer.findResume') }}">FIND RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
                         <a class="nav-link font-weight-bold" href="#">FAQ</a>
