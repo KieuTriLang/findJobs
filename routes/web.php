@@ -32,6 +32,9 @@ Route::get('create-resume',function () {
     return view('employee/resumeManagement/createResume');
 })->name('createResume');
 
+Route::get('faq',function (){
+    return view('employee/faq');
+})->name('employee.faq');
 
 Route::get('sign-in', [LoginController::class,'viewEmployee'])->name('employee.viewLogIn');
 Route::post('sign-in', [LoginController::class, 'login'])->name('employee.login');
