@@ -30,18 +30,10 @@ class RegisterControllerER extends Controller
         $company_logo=$request->file('company_logo')->getClientOriginalName();
         $request->file('company_logo')->move(public_path('company_logo'),$company_logo);
 
-        $i=0;
-        $user_code="employer$i";
-        while(User::where('user_code','=',$user_code)->count()>0){
-            $i++;
-            $user_code="employer$i";
-        }
-
         $user = new User;
         $user->name = $request->company_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->user_code = $user_code;
         $user->user_type = $request->user_type;
         $user->save();
 

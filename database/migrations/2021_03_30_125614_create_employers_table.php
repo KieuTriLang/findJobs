@@ -15,7 +15,7 @@ class CreateEmployersTable extends Migration
     {
         Schema::create('employers', function (Blueprint $table) {
             $table->id();
-            $table->string('employer_code');
+            $table->unsignedBigInteger('employer_id');
             $table->string('company_name');
             $table->string('company_size');
             $table->string('tax')->nullable();
@@ -28,8 +28,8 @@ class CreateEmployersTable extends Migration
             $table->string('company_phone');
             $table->timestamps();
 
-            $table->foreign('employer_code')
-                    ->references('user_code')
+            $table->foreign('employer_id')
+                    ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
         });

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSoftskillsTable extends Migration
+class CreateHobbiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSoftskillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('softskills', function (Blueprint $table) {
+        Schema::create('hobbies', function (Blueprint $table) {
             $table->id();
-            $table->string('softskill_name')->unique();
+            $table->string('hobby_name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateSoftskillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('softskills');
+        Schema::dropIfExists('hobbies');
     }
 }

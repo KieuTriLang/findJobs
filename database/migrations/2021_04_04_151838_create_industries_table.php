@@ -13,8 +13,9 @@ class CreateIndustriesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('industries');
         Schema::create('industries', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('industry_name')->unique();
             $table->timestamps();
         });

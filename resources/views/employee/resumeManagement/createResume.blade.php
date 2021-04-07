@@ -1,66 +1,67 @@
 @extends('layouts/employee')
+@section('additional-Style')
+<link rel="stylesheet" href="{{ asset('css/createResume.css') }}">
+@endsection
 @section('content')
 <div class="container-fluid mt-3">
-    <form action="" method="post">
+    <form action="{{ route('resume.store') }}" method="post">
         @csrf
         <div class="d-flex justify-content-between align-items-center bg-primary">
-            <input type="text" name="titleResume" id="titleResume" class="col-3 text-light border-0 h3 pt-2"
+            <input type="text" name="cv_name" id="titleResume" class="col-3 text-light border-0 h3 pt-2"
                 style="background-color:transparent;" value="Title CV">
             <button class="text-light font-weight-bold mr-2 mr-md-4 border-0" style="background-color:transparent;"
                 type="submit"><i class="far fa-save mr-2"></i>Save</button>
         </div>
         <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
 
-            <div class="col-3 p-0 d-flex flex-column">
-                <span class="" onclick="document.getElementById('avatar').click()">
-                    <img src="https://jobsgo.vn/uploads/avatar/202104/1170038_20210402133110.jpg" alt="" width="100%"
-                        height="100%" id="output">
-                    <input onchange="preview(event)" type="file" name="avatar" id="avatar"
-                        style="color:transparent;display:none;">
-                </span>
+            <div class="col-3 p-0">
+                <img src="https://jobsgo.vn/uploads/avatar/202104/1170038_20210402133110.jpg" alt="" class="w-100 h-100"
+                    id="output" onclick="document.getElementById('avatar').click()">
+                <input onchange="preview(event)" type="file" name="avatar" id="avatar"
+                    style="color:transparent;display:none;">
             </div>
 
             <div class="col-6 d-flex flex-column">
-                <input type="text" name="ee_name" id="name" class="col-8 text-light border-0 h3 pt-2"
+                <input type="text" name="name" id="name" class="col-12 text-light border-0 h3 pt-2"
                     style="background-color:transparent;" placeholder="Họ và tên">
-                <input type="text" name="" id="" class="col-8 text-light border-0 h5 pt-2"
+                <input type="text" name="career_name" id="" class="col-12 text-light border-0 h5 pt-2"
                     style="background-color:transparent;" placeholder="vị trí mong muốn">
                 <div class="d-flex align-items-center">
                     <label for="" class="m-0"><i class="far fa-envelope mr-2"></i></label>
-                    <input type="text" name="" id="" class="col-8 text-light border-0"
-                        style="background-color:transparent;" placeholder="email">
+                    <input type="text" name="email" id="" class="col-12 text-light border-0"
+                        style="background-color:transparent;" placeholder="Email">
                 </div>
                 <div class="d-flex align-items-center">
                     <label for="" class="m-0"><i class="fas fa-phone mr-2"></i></label>
-                    <input type="text" name="" id="" class="col-8 text-light border-0"
+                    <input type="text" name="phone_num" id="" class="col-12 text-light border-0"
                         style="background-color:transparent;" placeholder="Số điện thoại">
                 </div>
                 <div class="d-flex align-items-center">
                     <label for="" class="m-0"><i class="fas fa-birthday-cake mr-2"></i></label>
-                    <input type="date" name="" id="" class="col-8 text-light border-0"
+                    <input type="date" name="birthday" id="birthday" class="col-12 text-light border-0"
                         style="background-color:transparent;" placeholder="01/01/2000">
                 </div>
                 <div class="d-flex align-items-center">
                     <label for="" class="m-0"><i class="fas fa-map-marker-alt mr-2"></i></label>
-                    <input type="text" name="" id="" class="col-8 text-light border-0"
+                    <input type="text" name="address" id="" class="col-12 text-light border-0"
                         style="background-color:transparent;" placeholder="Tỉnh/Thành Phố">
                 </div>
             </div>
 
-            <div class="col-3 d-flex flex-column">
+            <div class="col-12 col-md-3 d-flex flex-md-column flex-row justify-content-around my-3 my-md-0">
                 <div class="d-flex align-items-center justify-content-start">
                     <label for="" class="m-0"><i class="fab fa-linkedin-in mr-2 h4"></i></label>
-                    <input type="text" name="" id="" class="col-10 text-light border-0"
+                    <input type="text" name="linkedIn" id="" class="col-10 text-light border-0"
                         style="background-color:transparent;" placeholder="linkedin.com/in/username">
                 </div>
                 <div class="d-flex align-items-center justify-content-start">
                     <label for="" class="m-0"><i class="fab fa-facebook-f mr-2 h4"></i></label>
-                    <input type="text" name="" id="" class="col-10 text-light border-0"
+                    <input type="text" name="facebook" id="" class="col-10 text-light border-0"
                         style="background-color:transparent;" placeholder="facebook.com/username">
                 </div>
                 <div class="d-flex align-items-center justify-content-start">
                     <label for="" class="m-0"><i class="fab fa-skype mr-2 h4"></i></label>
-                    <input type="text" name="" id="" class="col-10 text-light border-0"
+                    <input type="text" name="skype" id="" class="col-10 text-light border-0"
                         style="background-color:transparent;" placeholder="live:skype_username">
                 </div>
             </div>
@@ -69,7 +70,7 @@
                     <label for="job_target" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-user mr-2"></i>MỤC
                         TIÊU NGHỀ NGHIỆP</label>
                     <hr class=" bg-dark">
-                    <textarea name="job_target" id="" class="col-12 border-0"
+                    <textarea name="career_target" id="" class="col-12 border-0"
                         placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
                 </div>
                 <div class="d-flex row justify-content-around">
@@ -78,69 +79,120 @@
                             <label for="work_experience" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-briefcase mr-2"></i>KINH NGHIỆM LÀM VIỆC</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="work_experience" id="" class="col-12 border-0"
-                                placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
+                            <textarea type="text" name="work_exp" id="" class="col-12 border-0"
+                                placeholder="Ghi rõ vị trí, thời gian,nơi công tác, ... "></textarea>
                         </div>
                         <div class="mt-5">
                             <label for="education" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-graduation-cap mr-2"></i>HỌC VẤN</label>
                             <hr class="bg-dark">
                             <textarea type="text" name="education" id="" class="col-12 border-0"
-                                placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
+                                placeholder="Ghi rõ các cấp bậc học đã hoàn thành ..."></textarea>
                         </div>
                         <div class="mt-5">
                             <label for="activity" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-hiking mr-2"></i>HOẠT ĐỘNG</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="activity" id="" class="col-12 border-0"
-                                placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
+                            <textarea type="text" name="activities" id="" class="col-12 border-0"
+                                placeholder="Ghi rõ các hoạt động,sự kiện đã tham gia ..."></textarea>
                         </div>
                         <div class="mt-5">
                             <label for="award" class="h4 font-weight-bolder m-0"><i class="fas fa-crown mr-2"></i>GIẢI
                                 THƯỞNG</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="award" id="" class="col-12 border-0"
-                                placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
+                            <textarea type="text" name="awards" id="" class="col-12 border-0"
+                                placeholder="Giới thiệu một số thành tựu, giải thưởng đã đạt được ..."></textarea>
                         </div>
                         <div class="mt-5 mb-5">
                             <label for="references" class="h4 font-weight-bolder m-0"><i
                                     class="far fa-user-circle mr-2"></i>NGƯỜI THAM CHIẾU</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="references" id="" class="col-12 border-0"
-                                placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
+                            <textarea type="text" name="reference" id="" class="col-12 border-0"
+                                placeholder="Giới thiệu tổng quát về người tham chiếu ..."></textarea>
                         </div>
                     </div>
                     <div class="d-flex flex-column col-12 col-md-3">
                         <div class="mt-5">
-                            <label for="skill" class="h4 font-weight-bolder m-0"><i class="fas fa-tools mr-2"></i></i>KỸ
+                            <label for="hardskill" class="h4 font-weight-bolder m-0"><i
+                                    class="fas fa-tools mr-2"></i></i>KỸ
                                 NĂNG</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="skill" id="" class="col-12 border-0" disabled></textarea>
+                            <textarea name="hardskills" id="hard_skills" class=""></textarea>
+                            <div id="hardSkill" class="col-12 border-0"></div>
+                            <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fas fa-plus"></i>
+                                <ul class="list-unstyled dropdown-menu dropdown-menu-right col-12 skillList">
+                                    @foreach ($hardskills as $hardskill)
+                                    <li class="dropdown-item" onclick='skill(this,"hardSkill","hard_skills")'>
+                                        {{ $hardskill->hardskill_name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
+
+
                         <div class="mt-5">
-                            <label for="soft_skill" class="h4 font-weight-bolder m-0"><i
+                            <label for="softskills" class="h4 font-weight-bolder m-0"><i
                                     class="fab fa-battle-net mr-2"></i>KỸ NĂNG MỀM</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="soft_skill" id="" class="col-12 border-0" disabled></textarea>
+                            <textarea name="softskills" id="soft_skills" class="d-none"></textarea>
+                            <div name="softskills" id="softSkill" class="col-12 border-0"></div>
+                            <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fas fa-plus"></i>
+                                <ul class="list-unstyled dropdown-menu dropdown-menu-right col-12 skillList">
+                                    @foreach ($softskills as $softskill)
+                                    <li class="dropdown-item" onclick='skill(this,"softSkill","soft_skills")'>
+                                        {{ $softskill->softskill_name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
+
+
                         <div class="mt-5">
                             <label for="certificate" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-award mr-2"></i></i>CHỨNG CHỈ</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="certificate" id="" class="col-12 border-0" disabled></textarea>
+                            <textarea type="text" name="certificate" id="certificate" class="col-12 border-0"
+                                placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
                         </div>
+
+
                         <div class="mt-5">
                             <label for="language" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-language mr-2"></i></i>NGÔN NGỮ</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="language" id="" class="col-12 border-0" disabled
-                                disabled> hello</textarea>
+                            <textarea name="language" id="lang" class="d-none"></textarea>
+                            <div id="language" class="col-12 border-0" disabled></div>
+                            <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fas fa-plus"></i>
+                                <ul class="list-unstyled dropdown-menu dropdown-menu-right col-12 skillList">
+                                    @foreach ($languages as $language)
+                                    <li class="dropdown-item" onclick='skill(this,"language","lang")'>
+                                        {{ $language->language_name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                        <div class="mt-5">
+                        <div class="mt-5 mb-5">
                             <label for="hobby" class="h4 font-weight-bolder m-0"><i class="fas fa-gamepad mr-2"></i>SỞ
                                 THÍCH</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="hobby" id="" class="col-12 border-0" disabled></textarea>
+                            <textarea name="hobby" id="hob" class="d-none"></textarea>
+                            <div name="hobby" id="hobby" class="col-12 border-0" disabled></div>
+                            <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="fas fa-plus"></i>
+                                <ul class="list-unstyled dropdown-menu dropdown-menu-right col-12 skillList">
+                                    @foreach ($hobbies as $hobby)
+                                    <li class="dropdown-item" onclick='skill(this,"hobby","hob")'>
+                                        {{ $hobby->hobby_name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -149,17 +201,7 @@
     </form>
 </div>
 @endsection
-@section('additional-Scripts')
-<script type="text/javascript">
-    var preview = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.style.width="100px";
-        output.style.height="100px";
-        output.style.objectFit="cover";
-        output.onload = function() {
-        URL.revokeObjectURL(output.src) // free memory
-        }
-    };
-</script>
+@section('additional-Script')
+<script src="{{ asset("js/createResume.js") }}"></script>
+
 @endsection

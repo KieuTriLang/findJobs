@@ -13,10 +13,10 @@ class CreatePostJobsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('post_jobs');
         Schema::create('post_jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('employer_code');
-            $table->string('post_code')->primary();
+            $table->unsignedBigInteger('employer_id');
 
             $table->string('company_logo');
             $table->string('hire_position');
@@ -27,8 +27,8 @@ class CreatePostJobsTable extends Migration
             $table->string('location');
             $table->timestamps();
 
-            $table->foreign('employer_code')
-                    ->references('user_code')
+            $table->foreign('employer_id')
+                    ->references('id')
                     ->on('user');
         });
     }

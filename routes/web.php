@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterControllerER;
 use App\Http\Controllers\RegisterControllerEE;
+use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,7 @@ Route::get('find-job', function () {
     return view('employee/findJob');
 })->name('findJob');
 
-Route::get('resume-management',function () {
-    return view('employee/resumeManagement/showResume');
-})->name('resumeManagement');
-Route::get('create-resume',function () {
-    return view('employee/resumeManagement/createResume');
-})->name('createResume');
+Route::resource('resume',ResumeController::class)->middleware('auth');
 
 Route::get('faq',function (){
     return view('employee/faq');
