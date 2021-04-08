@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
-    @yield('additionall-Style')
+    @yield('additional-Style')
 </head>
 
 <body>
@@ -63,7 +63,7 @@
                                 <i class="fas fa-user-circle mr-2"></i>
                                 Account Infomation
                             </a>
-                            <a href="{{ route('resumeManagement') }}" class="dropdown-item">
+                            <a href="{{ route('resume.index') }}" class="dropdown-item">
                                 <i class="fas fa-tasks mr-2"></i>
                                 Resume Management
                             </a>
@@ -142,7 +142,7 @@
                 FindTalent JSC</div>
         </div>
     </footer>
-    @yield('additional-Scripts')
+    @yield('additional-Script')
 </body>
 
 </html>

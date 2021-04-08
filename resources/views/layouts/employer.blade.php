@@ -63,7 +63,7 @@
                                 <i class="fas fa-user-circle mr-2"></i>
                                 Account Infomation
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a href="{{ route('job.index') }}" class="dropdown-item">
                                 <i class="fas fa-tasks mr-2"></i>
                                 Jobs Management
                             </a>

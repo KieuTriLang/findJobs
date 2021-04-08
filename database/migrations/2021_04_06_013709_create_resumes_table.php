@@ -15,37 +15,33 @@ class CreateResumesTable extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->string('user_code');
+            $table->unsignedBigInteger('user_id');
             $table->string('post_code')->nullable();
-            $table->string('cv_name');
-            $table->string('name');
-            $table->string('career_name');
-            $table->string('email');
-            $table->string('phone_num');
-            $table->string('birthday');
-            $table->string('address');
+            $table->string('cv_name')->nullable();
+            $table->string('name')->nullable();
+            $table->string('career_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone_num')->nullable();
+            $table->string('birthday')->nullable();
+            $table->string('address')->nullable();
             $table->string('linkedIn')->nullable();
             $table->string('facebook')->nullable();
             $table->string('skype')->nullable();
-            $table->string('career_target');
-            $table->string('work_exp');
-            $table->string('education');
-            $table->string('activities');
-            $table->string('awards');
-            $table->string('reference');
-            $table->string('skills');
-            $table->string('softskills');
-            $table->string('certificate');
-            $table->string('language');
-            $table->string('hobby');
+            $table->string('career_target')->nullable();
+            $table->string('work_exp')->nullable();
+            $table->string('education')->nullable();
+            $table->string('activities')->nullable();
+            $table->string('awards')->nullable();
+            $table->string('reference')->nullable();
+            $table->string('certificate')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('user_code')
-                    ->references('user_code')
+            $table->foreign('user_id')
+                    ->references('id')
                     ->on('users');
             $table->foreign('post_code')
-                    ->references('post_code')
+                    ->references('id')
                     ->on('post_jobs');
         });
     }
