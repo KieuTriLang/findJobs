@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\EmployerRequest;
+use App\Http\Requests\QuestionsRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 /**
- * Class EmployerCrudController
+ * Class QuestionsCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class EmployerCrudController extends CrudController
+class QuestionsCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -19,8 +20,7 @@ class EmployerCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CloneOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\BulkCloneOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
+    use CrudTrait;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -29,9 +29,9 @@ class EmployerCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Employer::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/employer');
-        CRUD::setEntityNameStrings('employer', 'employers');
+        CRUD::setModel(\App\Models\Questions::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/questions');
+        CRUD::setEntityNameStrings('questions', 'questions');
     }
 
     /**
@@ -42,20 +42,7 @@ class EmployerCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('id');
-        CRUD::column('employer_code');
-        CRUD::column('company_name');
-        CRUD::column('company_size');
-        CRUD::column('tax');
-        CRUD::column('website');
-        CRUD::column('company_summary');
-        CRUD::column('company_logo');
-        CRUD::column('contact_name');
-        CRUD::column('position');
-        CRUD::column('company_address');
-        CRUD::column('company_phone');
-        CRUD::column('created_at');
-        CRUD::column('updated_at');
+        CRUD::setFromDb(); // columns
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -72,22 +59,9 @@ class EmployerCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(EmployerRequest::class);
+        CRUD::setValidation(QuestionsRequest::class);
 
-        CRUD::field('id');
-        CRUD::field('employer_code');
-        CRUD::field('company_name');
-        CRUD::field('company_size');
-        CRUD::field('tax');
-        CRUD::field('website')->size(6);
-        CRUD::field('company_summary')->size(6);
-        CRUD::field('company_logo')->type('ckeditor');
-        CRUD::field('contact_name');
-        CRUD::field('position');
-        CRUD::field('company_address');
-        CRUD::field('company_phone');
-        CRUD::field('created_at');
-        CRUD::field('updated_at');
+        CRUD::setFromDb(); // fields
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

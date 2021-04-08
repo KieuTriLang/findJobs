@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterControllerER;
 use App\Http\Controllers\RegisterControllerEE;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 /*
 |--------------------------------------------------------------------------

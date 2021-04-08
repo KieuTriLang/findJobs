@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Charts;
 use Backpack\CRUD\app\Http\Controllers\ChartController;
 use Backpack\CRUD\app\Library\Widget;
 use ConsoleTVs\Charts\Classes\Chartjs\Chart;
+use Psy\Util\Json;
 
 /**
  * Class WeeklyUsersChartController
