@@ -27,6 +27,11 @@ class CreateEmployersTable extends Migration
             $table->string('company_address');
             $table->string('company_phone');
             $table->timestamps();
+
+            $table->foreign('employer_code')
+                    ->references('user_code')
+                    ->on('users')
+                    ->onDelete('cascade');
         });
     }
 

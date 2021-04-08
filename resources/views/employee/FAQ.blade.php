@@ -40,7 +40,7 @@
         </div>
     </div>
 @endsection
-@section('additionall-Script')
+@section('additional-Scripts')
     <script>
         $(document).ready(function () {
             $(".change-content-faq").click(function () {

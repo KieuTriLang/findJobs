@@ -116,12 +116,21 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpspec/prophecy" />
+<<<<<<< HEAD
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel-shift/faker-registry" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel-shift/blueprint" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/generators" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/consoletvs/charts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/balping/json-raw-encoder" />
+=======
+      <excludeFolder url="file://$MODULE_DIR$/vendor/creativeorange/gravatar" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/backpack/crud" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/prologue/alerts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/event-manager" />
+>>>>>>> 4951621c8cc4793222723455a4da49fc965aa9f5
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

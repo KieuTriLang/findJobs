@@ -26,6 +26,13 @@ Route::get('find-job', function () {
     return view('employee/findJob');
 })->name('findJob');
 
+Route::get('resume-management',function () {
+    return view('employee/resumeManagement/showResume');
+})->name('resumeManagement');
+Route::get('create-resume',function () {
+    return view('employee/resumeManagement/createResume');
+})->name('createResume');
+
 Route::get('faq',function (){
     return view('employee/faq');
 })->name('employee.faq');

@@ -9,7 +9,7 @@
 }
 
 .change-content-faq a:hover {
-    color: #03abff!important;
+    color: #03abff;
 }
 
 .change-content-faq[aria-expanded="true"] .fa-chevron-down {

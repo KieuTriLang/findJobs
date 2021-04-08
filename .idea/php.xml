@@ -115,12 +115,15 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+<<<<<<< HEAD
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/laravel-shift/faker-registry" />
       <path value="$PROJECT_DIR$/vendor/laravel-shift/blueprint" />
       <path value="$PROJECT_DIR$/vendor/backpack/generators" />
       <path value="$PROJECT_DIR$/vendor/consoletvs/charts" />
       <path value="$PROJECT_DIR$/vendor/balping/json-raw-encoder" />
+=======
+>>>>>>> 4951621c8cc4793222723455a4da49fc965aa9f5
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
