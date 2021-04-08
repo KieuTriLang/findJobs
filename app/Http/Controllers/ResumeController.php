@@ -16,7 +16,7 @@ class ResumeController extends Controller
      */
     public function index()
     {
-        $resumes = DB::table('resumes')->where('user_id', Auth::id())->select('id', 'cv_name')->get();
+        $resumes = DB::table('resumes')->where('user_id', Auth::id())->select('id', 'cv_name')->orderByDesc('created_at')->get();
         $count =  DB::table('resumes')->where('user_id', Auth::id())->count();
         return view('employee/resumeManagement/showResume', [
             'count' => $count,

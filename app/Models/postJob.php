@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PostJob extends Model
 {
     use HasFactory;
+    protected $table="post_jobs";
 }

@@ -18,18 +18,19 @@ class CreatePostJobsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('employer_id');
 
-            $table->string('company_logo');
+            $table->string('hire_logo');
             $table->string('hire_position');
             $table->string('company_name');
             $table->string('description');
-            $table->string('require_skill');
+            $table->string('hardskills');
+            $table->string('softskills');
             $table->string('salary');
             $table->string('location');
             $table->timestamps();
 
             $table->foreign('employer_id')
                     ->references('id')
-                    ->on('user');
+                    ->on('users');
         });
     }
 

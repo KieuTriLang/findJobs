@@ -1,6 +1,6 @@
 @extends('layouts/employee')
 @section('additional-Style')
-<link rel="stylesheet" href="{{ asset('css/createResume.css') }}">
+<link rel="stylesheet" href="{{ asset('css/createRJ.css') }}">
 @endsection
 @section('content')
 <div class="container-fluid mt-3">
@@ -71,7 +71,7 @@
                     <label for="job_target" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-user mr-2"></i>MỤC
                         TIÊU NGHỀ NGHIỆP</label>
                     <hr class=" bg-dark">
-                    <textarea name="career_target" id="" class="col-12 border-0"
+                    <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="career_target" id="" class="col-12 border-0"
                         placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu...">{{ $resume->career_target }}</textarea>
                 </div>
                 <div class="d-flex row justify-content-around">
@@ -80,35 +80,35 @@
                             <label for="work_experience" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-briefcase mr-2"></i>KINH NGHIỆM LÀM VIỆC</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="work_exp" id="" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="work_exp" id="" class="col-12 border-0"
                                 placeholder="Ghi rõ vị trí, thời gian,nơi công tác, ... ">{{ $resume->work_exp }}</textarea>
                         </div>
                         <div class="mt-5">
                             <label for="education" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-graduation-cap mr-2"></i>HỌC VẤN</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="education" id="" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="education" id="" class="col-12 border-0"
                                 placeholder="Ghi rõ các cấp bậc học đã hoàn thành ...">{{ $resume->education }}</textarea>
                         </div>
                         <div class="mt-5">
                             <label for="activity" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-hiking mr-2"></i>HOẠT ĐỘNG</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="activities" id="" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="activities" id="" class="col-12 border-0"
                                 placeholder="Ghi rõ các hoạt động,sự kiện đã tham gia ...">{{ $resume->activities }}</textarea>
                         </div>
                         <div class="mt-5">
                             <label for="award" class="h4 font-weight-bolder m-0"><i class="fas fa-crown mr-2"></i>GIẢI
                                 THƯỞNG</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="awards" id="" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="awards" id="" class="col-12 border-0"
                                 placeholder="Giới thiệu một số thành tựu, giải thưởng đã đạt được ...">{{ $resume->awards }}</textarea>
                         </div>
                         <div class="mt-5 mb-5">
                             <label for="references" class="h4 font-weight-bolder m-0"><i
                                     class="far fa-user-circle mr-2"></i>NGƯỜI THAM CHIẾU</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="reference" id="" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="reference" id="" class="col-12 border-0"
                                 placeholder="Giới thiệu tổng quát về người tham chiếu ...">{{ $resume->reference }}</textarea>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                                     class="fas fa-tools mr-2"></i></i>KỸ
                                 NĂNG</label>
                             <hr class="bg-dark">
-                            <div name="hardskills" id="hardSkill" class="col-12 border-0"></div>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="hardskills" id="hardSkill" class="col-12 border-0">{{ $resume->hardskills }}</textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
@@ -136,7 +136,7 @@
                             <label for="softskills" class="h4 font-weight-bolder m-0"><i
                                     class="fab fa-battle-net mr-2"></i>KỸ NĂNG MỀM</label>
                             <hr class="bg-dark">
-                            <div name="softskills" id="softSkill" class="col-12 border-0"></div>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="softskills" id="softSkill" class="col-12 border-0">{{ $resume->softskills }}</textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
@@ -154,7 +154,7 @@
                             <label for="certificate" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-award mr-2"></i></i>CHỨNG CHỈ</label>
                             <hr class="bg-dark">
-                            <textarea type="text" name="certificate" id="certificate" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="certificate" id="certificate" class="col-12 border-0"
                                 placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
                         </div>
 
@@ -163,7 +163,7 @@
                             <label for="language" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-language mr-2"></i></i>NGÔN NGỮ</label>
                             <hr class="bg-dark">
-                            <div name="language" id="language" class="col-12 border-0" disabled></div>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="language" id="language" class="col-12 border-0">{{ $resume->language }}</textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
@@ -179,7 +179,7 @@
                             <label for="hobby" class="h4 font-weight-bolder m-0"><i class="fas fa-gamepad mr-2"></i>SỞ
                                 THÍCH</label>
                             <hr class="bg-dark">
-                            <div name="hobby" id="hobby" class="col-12 border-0" disabled></div>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="hobby" id="hobby" class="col-12 border-0">{{ $resume->hobby }}</textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
@@ -199,5 +199,5 @@
 </div>
 @endsection
 @section('additional-Script')
-<script src="{{ asset("js/createResume.js") }}"></script>
+<script src="{{ asset("js/createRJ.js") }}"></script>
 @endsection

@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-between align-items-center bg-warning">
         <p class="h6 m-2 font-weight-bold">Resume Management ({{ $count }})</p>
         <a href="{{ route('resume.create') }}" class="text-dark font-weight-bold mr-2 mr-md-4"><i
-                class="fas fa-plus-square mr-2"></i>Create <span class="d-none d-sm-inline">Resume</span></a>
+                class="fas fa-plus-square mr-2"></i>Tạo <span class="d-none d-sm-inline">CV</span></a>
     </div>
     <div class="d-flex mt-4 row justify-content-around">
         @foreach ($resumes as $resume) <div class="col-10 col-md-5 border shadow d-flex align-items-center mb-3">

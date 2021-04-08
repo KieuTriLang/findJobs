@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterControllerER;
 use App\Http\Controllers\RegisterControllerEE;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\PostJobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ Route::group(['prefix' => 'employer'], function () {
         return view('employer/FAQ');
     })->name('employer.faq');
 
+    Route::resource('job',PostJobController::class)->middleware('auth');
     Route::get('sign-in', [LoginController::class, 'viewEmployer'])->name('employer.viewLogIn');
     Route::post('sign-in', [LoginController::class, 'login'])->name('employer.login');
     Route::post('/', [LoginController::class, 'logoutEmployer'])->name('employer.logout');
