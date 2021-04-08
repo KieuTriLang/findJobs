@@ -1,0 +1,36 @@
+models:
+  Category:
+    parent_id: id foregin:categories nullable
+    lft: integer unsigned nullable
+    rgt: integer unsigned nullable
+    depth: integer unsigned nullable
+    name: string
+    slug: string unique
+    timestamps: true
+    softDeletes: true
+    relationships:
+      hasMany: Article
+
+  Article:
+    category_id: id foregin
+    title: string
+    slug: string unique dafault:''
+    content: text
+    image: string nullable
+    status: enum:PUBLISHED,DRAFT
+    date: date
+    featured: boolean default:0
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsToMany: Tag
+
+  Tag:
+    name: string
+    slug: string unique
+    timestamps: true
+    softDeletes: true
+    relationships:
+      belongsToMany: Article
+
+      seeders: Article, Category, Tag

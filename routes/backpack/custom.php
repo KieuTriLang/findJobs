@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 // --------------------------
 // Custom Backpack Routes
 // --------------------------
@@ -14,4 +14,11 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+
+    Route::crud('employer', 'EmployerCrudController');
+    Route::crud('users', 'UsersCrudController');
+    Route::get('charts/weekly-users', 'Charts\WeeklyUsersChartController@response')->name('charts.weekly-users.index');
+    Route::crud('user', 'UserCrudController');
+    Route::crud('question', 'QuestionCrudController');
+    Route::crud('questions', 'QuestionsCrudController');
 }); // this should be the absolute last line of this file

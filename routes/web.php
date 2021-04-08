@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterControllerER;
 use App\Http\Controllers\RegisterControllerEE;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\PostJobController;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 /*
 |--------------------------------------------------------------------------

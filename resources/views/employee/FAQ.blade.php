@@ -1,5 +1,6 @@
 @php
-    $question =\App\Models\question::all();
+    use Backpack\CRUD\app\Models\Traits\CrudTrait;
+        $question =\App\Models\question::all();
 @endphp
 @extends('layouts.employee')
 <head>
