@@ -1,119 +1,198 @@
 @extends('layouts.employee')
 @section('content')
-<div class="d-flex mt-5 ml-md-5">
-        <p class="h2">Search job result: <span class="text-danger">12.567</span></p>
-</div>
-<div class="d-flex flex-column flex-md-row justify-content-md-around mt-4">
-        <div class="col-10 col-md-8">
-                @for ($i = 0; $i < 10; $i++) <div class="d-flex flex-column flex-md-row align-items-md-center mx-auto mt-2 ml-md-5 border">
-                        <a href="#" class="col-1 p-0 text-center text-dark">
-                                <i class="fas fa-star"></i>
-                        </a>
-                        <div class="col-10 col-md-2 p-0">
-                                <img src="https://www.findjobs.vn/htdocs/thumbs/employers/202011/133x100x0-200x100x0_13796_digiworld.jpg"
-                                        alt="">
+    <style>
+        .text-hiden {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+        }
+        .font-size {
+            font-size: 13px;
+        }
+        .tg-themetag {
+            background-color: #e91e63;
+        }
+        .tg-themetag {
+            background: #ff9800;
+            right: -20px;
+            left: initial;
+            top: 10px;
+            width: 80px;
+            text-align: center;
+            transform: rotate(
+                45deg
+            );
+            -webkit-transform: rotate(
+                45deg
+            );
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            font-size: 8px;
+            padding: 5px 3px 3px 6px;
+        }
+        .tg-themetag {
+            background: #ff9800;
+            right: -20px;
+            left: initial;
+            top: 12px;
+            width: 90px;
+            text-align: center;
+            transform: rotate(
+                45deg
+            );
+            -webkit-transform: rotate(
+                45deg
+            );
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            font-size: 9px;
+        }
+        .tg-themetag {
+            top: 7px;
+            z-index: 2;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 10px;
+            position: absolute;
+            background: #ff526c;
+            padding: 5px 3px 3px 10px;
+            text-transform: uppercase;
+        }
+        .tg-featuretag:before {
+            border-left: 10px solid #ff9800;
+            display: none;
+        }
+        .tg-featuretag:before {
+            top: 0;
+            left: 100%;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 10px solid #ff526c;
+        }
+        .tg-featuretag:after, .tg-featuretag:before {
+            width: 0;
+            height: 0;
+            content: '';
+            position: absolute;
+        }
+        .tg-featuretag:after {
+            border-top: 5px solid #ff9800;
+            border-top-width: 5px;
+            border-top-style: solid;
+            border-top-color: rgb(255, 152, 0);
+            display: none;
+        }
+        .tg-featuretag:after {
+            top: 100%;
+            left: 0;
+            border-top: 5px solid #eb344f;
+            border-left: 5px solid transparent;
+        }
+        .tg-featuretag:after, .tg-featuretag:before {
+            width: 0;
+            height: 0;
+            content: '';
+            position: absolute;
+        }
+        :after, :before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .item {
+            overflow: hidden;
+        }
+    </style>
+
+    <div class="d-flex mt-3 ml-3">
+        <h4 class="mb-2">26754 Việc Làm Tháng 04/2021</h4>
+    </div>
+    <div class="row mx-2">
+        <div class="col-12  col-sm-9 col-md-9 col-lg-9">
+            <div class="row pt-0">
+                <?php foreach ($employment as $value):?>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="job-box p-1">
+                        <div class="row border border-muted item">
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3  p-1 p-sm-2 p-md-2 p-lg-2">
+                                <img class="img-fluid" src="<?= $value->image_company?>" alt="company">
+                            </div>
+                            <div class="col-9 col-sm-9 col-md-9 col-lg-9 p-2">
+                                <a href="#" class="text-danger"><h5 class="mb-1 text-hiden mt-3"><?= $value->position?></h5></a>
+                                <a href="#" class="text-hiden text-secondary mb-1"><i><?= $value->company?></i></a>
+                                <span class="font-size"><i class="fas fa-map-marker-alt"></i>&ensp;<?= $value->location?></span>&ensp;&ensp;
+                                <span class="font-size"><i class="far fa-clock"></i><?= $value->start_date?></span>&ensp;&ensp;
+                                <span class="font-size"><i class="fas fa-dollar-sign"></i>&ensp;<?= $value->salary?></span>
+                                <div class="tg-themetag tg-featuretag platinum">Hot</div>
+                            </div>
                         </div>
-                        <div class="col-12 col-md-6 p-0 ml-3">
-                                <p class="font-weight-bold m-0">[HCM] Giám Sát Bán Hàng Kênh MT - Ngành hàng FMCG</p>
-                                <p class="mb-1">Công Ty Cổ Phần Thế Giới Số</p>
-                                <small>
-                                        <span>Skill tags >></span>
-                                        <span class="bg-warning p-1 ml-1 rounded">fcmg</span>
-                                        <span class="bg-warning p-1 ml-1 rounded">marketing</span>
-                                        <span class="bg-warning p-1 ml-1 rounded">trading</span>
-                                </small>
-                                <p class="mt-2">
-                                        <span class="mr-5"><i class="fas fa-dollar-sign"></i>20 - 100tr</span>
-                                        <span><i class="fas fa-map-marker-alt"></i>Tp. Hồ Chí Minh</span>
-                                </p>
-                        </div>
-                        <div class="col-12 col-md-3 d-flex flex-column">
-                                <p class="text-center"><i class="far fa-calendar-alt mr-2"></i>20-10-2021</p>
-                                <a href="#" class="btn btn-outline-danger">Apply now</a>
-                        </div>
-        </div>
-        @endfor
-        <div class="d-flex justify-content-center mt-5">
+                    </div>
+                </div>
+                <?php endforeach;?>
+
+            </div>
+            <div class="d-flex justify-content-center mt-5">
                 <ul class="pagination">
-                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ $employment->previousPageUrl()}}">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ $employment->url(1)}}">1</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ $employment->url(2)}}">2</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ $employment->url(3)}}">3</a></li>
+                    <li class="page-item"><a class="page-link" href="{{$employment->nextPageUrl()}}">Next</a></li>
                 </ul>
+            </div>
         </div>
-</div>
-<div class="col-10 col-md-3 offset-md-0 p-0 border">
-        <p class="bg-danger text-white text-center font-weight-bold py-3">FILTER RESUTLS</p>
-        <div class="px-2">
+        <div class="col-12  col-sm-3 col-md-3 p-0 pt-1">
+            <p class="bg-danger text-white text-center font-weight-bold py-3">FILTER RESUTLS</p>
+            <div class="px-2">
                 <p class="my-3 text-danger font-weight-bold">REFINEMENTS</p>
                 <small class="bg-warning p-1 rounded">Hồ Chí Minh <a href="#" class="text-decoration-none text-dark"><i
-                                        class="fas fa-minus ml-3"></i></a></small>
+                            class="fas fa-minus ml-3"></i></a></small>
                 <p class="my-3 text-danger font-weight-bold">JOB BY LOCATIONS</p>
                 <ul class="list-unstyled">
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Hồ
-                                        Chí
-                                        Minh</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Cần
-                                        Thơ</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Hà
-                                        Nội</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Cà
-                                        Mau</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Đà
-                                        Nẵng</a><span class="text-muted">12.000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Hồ
+                            Chí Minh</a><span class="text-muted">12.000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Cần Thơ</a><span class="text-muted">12.000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Hà
+                            Nội</a><span class="text-muted">12.000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Cà
+                            Mau</a><span class="text-muted">12.000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Đà
+                            Nẵng</a><span class="text-muted">12.000</span></li>
                 </ul>
                 <p class="my-3 text-danger font-weight-bold">JOB BY INDUSTRY</p>
                 <ul class="list-unstyled">
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Sales /
-                                        Business
-                                        Development</a><span class="text-muted">3000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Manufacturing /
-                                        Process</a><span class="text-muted">3000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Customer
-                                        Service</a><span class="text-muted">3000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Accounting /
-                                        Auditing / Tax</a><span class="text-muted">3000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Marketing</a><span class="text-muted">3000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Sales /
+                            Business Development</a><span class="text-muted">3000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Manufacturing
+                            /
+                            Process</a><span class="text-muted">3000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Customer
+                            Service</a><span class="text-muted">3000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Accounting /
+                            Auditing / Tax</a><span class="text-muted">3000</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Marketing
+                        </a><span class="text-muted">3000</span></li>
                 </ul>
                 <p class="my-3 text-danger font-weight-bold">JOB BY LEVEL</p>
                 <ul class="list-unstyled">
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Experienced</a><span class="text-muted">3476</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Entry
-                                        Level</a><span class="text-muted">3476</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Manager</a><span class="text-muted">3476</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Team
-                                        Leader
-                                        /
-                                        Supervisor</a><span class="text-muted">3476</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#"
-                                        class="text-dark">Student /
-                                        Internship</a><span class="text-muted">3476</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Experienced</a><span
+                            class="text-muted">3476</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Entry
+                            Level</a><span class="text-muted">3476</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Manager</a><span
+                            class="text-muted">3476</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Team Leader
+                            / Supervisor</a><span class="text-muted">3476</span></li>
+                    <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Student /
+                            Internship</a><span class="text-muted">3476</span></li>
                 </ul>
-                <p class="my-3 text-danger font-weight-bold">JOB BY LOCATIONS</p>
-                <ul class="list-unstyled">
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Hồ
-                                        Chí
-                                        Minh</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Cần
-                                        Thơ</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Hà
-                                        Nội</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Cà
-                                        Mau</a><span class="text-muted">12.000</span></li>
-                        <li class="border-bottom mt-1 d-flex justify-content-between"><a href="#" class="text-dark">Đà
-                                        Nẵng</a><span class="text-muted">12.000</span></li>
-                </ul>
+            </div>
         </div>
-</div>
-</div>
+    </div>
 
 @endsection

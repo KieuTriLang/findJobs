@@ -21,9 +21,7 @@ use App\Http\Controllers\RegisterControllerEE;
 
 Route::get('/',[HomeController::Class,'employeeHome'])->name('employee.home');
 
-Route::get('find-job', function () {
-    return view('employee/findJob');
-})->name('findJob');
+Route::get('find-job',[\App\Http\Controllers\EmploymentController::class,'getData'])->name('findJob');
 
 Route::get('sign-in', [LoginController::class,'viewEmployee'])->name('employee.viewLogIn');
 Route::post('sign-in', [LoginController::class, 'login'])->name('employee.login');
