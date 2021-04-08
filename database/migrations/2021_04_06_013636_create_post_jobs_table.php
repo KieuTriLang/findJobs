@@ -18,12 +18,13 @@ class CreatePostJobsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('employer_id');
 
-            $table->string('hire_logo');
+            $table->string('hire_logo')->nullable();
             $table->string('hire_position');
             $table->string('company_name');
             $table->string('description');
-            $table->string('hardskills');
-            $table->string('softskills');
+            $table->string('hardskills')->nullable();
+            $table->string('softskills')->nullable();
+            $table->string('another_des')->nullable();
             $table->string('salary');
             $table->string('location');
             $table->timestamps();

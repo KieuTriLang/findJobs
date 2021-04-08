@@ -24,8 +24,11 @@ class PostJobRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'detail_jobs'=>'required',
+            'hire_position'=>'required',
+            'company_name'=>'required',
+            'description'=>'required',
+            'salary'=> 'required',
+            'location'=>'required',
         ];
     }
 }

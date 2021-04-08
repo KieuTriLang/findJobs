@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostJobRequest;
@@ -16,7 +17,12 @@ class PostJobController extends Controller
      */
     public function index()
     {
-        return view('employer/jobsManagement/showJob');
+        $jobs = DB::table('post_jobs')->where('employer_id', Auth::id())->select('id', 'hire_position', 'company_name', 'description', 'created_at')->orderByDesc('created_at')->get();
+        $count = DB::table('post_jobs')->where('employer_id', Auth::id())->count();
+        return view('employer/jobsManagement/showJob', [
+            'postJobs' => $jobs,
+            'count' => $count,
+        ]);
     }
 
     /**
@@ -28,7 +34,7 @@ class PostJobController extends Controller
     {
         $hardskills = DB::table('hardskills')->get();
         $softskills = DB::table('softskills')->get();
-        return view('employer/jobsManagement/createJob',[
+        return view('employer/jobsManagement/createJob', [
             'hardskills' => $hardskills,
             'softskills' => $softskills,
         ]);
@@ -44,16 +50,17 @@ class PostJobController extends Controller
     {
         $postJob = new PostJob;
         $postJob->employer_id = Auth::id();
-        $postJob->hire_logo=$request->hire_logo;
-        $postJob->hire_position=$request->hire_position;
-        $postJob->company_name= $request->company_name;
-        $postJob->description= $request->description;
-        $postJob->hardskills= $request->hardskills;
-        $postJob->softskills= $request->softskills;
-        $postJob->salary= $request->salary;
-        $postJob->location= $request->location;
+        $postJob->hire_logo = $request->hire_logo;
+        $postJob->hire_position = $request->hire_position;
+        $postJob->company_name = $request->company_name;
+        $postJob->description = $request->description;
+        $postJob->hardskills = $request->hardskills;
+        $postJob->softskills = $request->softskills;
+        $postJob->another_des = $request->another_des;
+        $postJob->salary = $request->salary;
+        $postJob->location = $request->location;
         $postJob->save();
-
+        return redirect('/employer/job');
     }
 
     /**
@@ -75,7 +82,14 @@ class PostJobController extends Controller
      */
     public function edit($id)
     {
-
+        $hardskills = DB::table('hardskills')->get();
+        $softskills = DB::table('softskills')->get();
+        $postJobs = DB::table('post_jobs')->where('id', "=", $id)->first();
+        return view('employer/jobsManagement/editJob', [
+            'postJobs' => $postJobs,
+            'hardskills' => $hardskills,
+            'softskills' => $softskills,
+        ]);
     }
 
     /**
@@ -87,7 +101,20 @@ class PostJobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('post_jobs')
+            ->where('id', '=', $id)
+            ->update([
+                "hire_logo" => $request->hire_logo,
+                "hire_position" => $request->hire_position,
+                "company_name" => $request->company_name,
+                "description" => $request->description,
+                "hardskills" => $request->hardskills,
+                "softskills" => $request->softskills,
+                "another_des" => $request->another_des,
+                "salary" => $request->salary,
+                "location" => $request->location,
+            ]);
+        return redirect('/employer/job');
     }
 
     /**
@@ -98,6 +125,7 @@ class PostJobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('post_jobs')->where('id', '=', $id)->delete();
+        return redirect('/employer/job');
     }
 }

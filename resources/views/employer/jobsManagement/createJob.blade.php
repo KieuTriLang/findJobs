@@ -15,24 +15,43 @@
             </div>
 
             <div class="col-9 d-flex flex-column">
-                <input type="text" name="hire_poistion" id="hire_position" class="col-12 text-light border-0 h5 pt-2"
+                <input type="text" name="hire_position" id="hire_position"
+                    class="col-12 text-light border-0 h5 pt-2 @error ('hire_position') is-invalid @enderror"
                     style="background-color:transparent;" placeholder="Vị trí tuyển dụng">
-                <input type="text" name="company_name" id="company_name" class="col-12 text-light border-0 h5 pt-2"
+                @error('hire_position')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <input type="text" name="company_name" id="company_name"
+                    class="col-12 text-light border-0 h5 pt-2 @error ('company_name') is-invalid @enderror"
                     style="background-color:transparent;" placeholder="Tên công ty/ chi nhánh cần tuyển dụng">
+                @error('company_name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
 
             </div>
             <div class="col-12 bg-white text-dark pt-1">
                 <div class="col-12 p-0">
-                    <label for="job_target" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>MÔ TẢ
+                    <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>MÔ TẢ
                         CÔNG VIỆC</label>
                     <hr class=" bg-dark">
-                    <textarea name="description" id="description" class="col-12 border-0"
+                    <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                        name="description" id="description"
+                        class="col-12 border-0 @error ('description') is-invalid @enderror"
                         placeholder="Mô tả chi tiết công việc..."></textarea>
+                    @error('description')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <div class="d-flex row justify-content-around">
                     <div class="col-12 col-md-6">
-                        <label for="job_target" class="h4 font-weight-bolder pt-5 m-0"><i
-                                class="fas fa-edit mr-2"></i>Yêu cầu kỹ năng</label>
+                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Yêu cầu kỹ
+                            năng</label>
                         <hr class=" bg-dark">
                         <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
                             name="hardskills" id="hardSkill" class="col-12 border-0"></textarea>
@@ -48,8 +67,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="job_target" class="h4 font-weight-bolder pt-5 m-0"><i
-                                class="fas fa-edit mr-2"></i>Yều cầu kĩ năng mềm</label>
+                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Yều cầu kĩ
+                            năng mềm</label>
                         <hr class=" bg-dark">
                         <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
                             name="softskills" id="softSkill" class="col-12 border-0"></textarea>
@@ -65,13 +84,38 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <label for="job_target" class="h4 font-weight-bolder pt-5 m-0"><i
-                                class="fas fa-edit mr-2"></i>Yều cầu khác</label>
+                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Yều cầu
+                            khác</label>
                         <hr class=" bg-dark">
-                        <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name=""
-                            id="" class="col-12 border-0"
+                        <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                            name="another_des" id="" class="col-12 border-0"
                             placeholder="Nếu công ty bạn cần thêm yêu cầu khác hãy điền vào đây ..."></textarea>
-
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Mức
+                            Lương</label>
+                        <hr class=" bg-dark">
+                        <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                            name="salary" id="salary" class="col-12 border-0 @error ('salary') is-invalid @enderror"
+                            placeholder="Mức lương ..."></textarea>
+                        @error('salary')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Vị trí công
+                            ty/chi nhánh</label>
+                        <hr class=" bg-dark">
+                        <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                            name="location" id="salary" class="col-12 border-0 @error ('location') is-invalid @enderror"
+                            placeholder="Vị trí công ty/chi nhánh ..."></textarea>
+                        @error('location')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                 </div>
             </div>
