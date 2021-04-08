@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 // --------------------------
 // Custom Backpack Routes
 // --------------------------
@@ -14,7 +14,7 @@ Route::group([
     ),
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
-<<<<<<< HEAD
+
     Route::crud('employer', 'EmployerCrudController');
     Route::crud('users', 'UsersCrudController');
     Route::get('charts/weekly-users', 'Charts\WeeklyUsersChartController@response')->name('charts.weekly-users.index');
@@ -22,6 +22,3 @@ Route::group([
     Route::crud('question', 'QuestionCrudController');
     Route::crud('questions', 'QuestionsCrudController');
 }); // this should be the absolute last line of this file
-=======
-}); // this should be the absolute last line of this file
->>>>>>> 4951621c8cc4793222723455a4da49fc965aa9f5
