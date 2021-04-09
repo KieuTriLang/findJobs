@@ -115,35 +115,29 @@
     <div class="row mx-2">
         <div class="col-12  col-sm-9 col-md-9 col-lg-9">
             <div class="row pt-0">
-                <?php foreach ($employment as $value):?>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                {{-- @foreach ($collection as $item) --}}
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                     <div class="job-box p-1">
                         <div class="row border border-muted item">
                             <div class="col-3 col-sm-3 col-md-3 col-lg-3  p-1 p-sm-2 p-md-2 p-lg-2">
-                                <img class="img-fluid" src="<?= $value->image_company?>" alt="company">
+                                <img class="img-fluid" src="" alt="company">
                             </div>
                             <div class="col-9 col-sm-9 col-md-9 col-lg-9 p-2">
-                                <a href="#" class="text-danger"><h5 class="mb-1 text-hiden mt-3"><?= $value->position?></h5></a>
-                                <a href="#" class="text-hiden text-secondary mb-1"><i><?= $value->company?></i></a>
-                                <span class="font-size"><i class="fas fa-map-marker-alt"></i>&ensp;<?= $value->location?></span>&ensp;&ensp;
-                                <span class="font-size"><i class="far fa-clock"></i><?= $value->start_date?></span>&ensp;&ensp;
-                                <span class="font-size"><i class="fas fa-dollar-sign"></i>&ensp;<?= $value->salary?></span>
+                                <a href="#" class="text-danger"><h5 class="mb-1 text-hiden mt-3"></h5></a>
+                                <a href="#" class="text-hiden text-secondary mb-1"><i></i></a>
+                                <span class="font-size"><i class="fas fa-map-marker-alt"></i>&ensp;</span>&ensp;&ensp;
+                                <span class="font-size"><i class="far fa-clock"></i></span>&ensp;&ensp;
+                                <span class="font-size"><i class="fas fa-dollar-sign"></i>&ensp;</span>
                                 <div class="tg-themetag tg-featuretag platinum">Hot</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php endforeach;?>
+                {{-- @endforeach --}}
 
             </div>
             <div class="d-flex justify-content-center mt-5">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="{{ $employment->previousPageUrl()}}">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="{{ $employment->url(1)}}">1</a></li>
-                    <li class="page-item"><a class="page-link" href="{{ $employment->url(2)}}">2</a></li>
-                    <li class="page-item"><a class="page-link" href="{{ $employment->url(3)}}">3</a></li>
-                    <li class="page-item"><a class="page-link" href="{{$employment->nextPageUrl()}}">Next</a></li>
-                </ul>
+
             </div>
         </div>
         <div class="col-12  col-sm-3 col-md-3 p-0 pt-1">
