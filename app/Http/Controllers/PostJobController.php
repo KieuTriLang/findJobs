@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostJobRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\PostJob;
 
 class PostJobController extends Controller
@@ -17,7 +18,7 @@ class PostJobController extends Controller
      */
     public function index()
     {
-        $jobs = DB::table('post_jobs')->where('employer_id', Auth::id())->select('id', 'hire_position', 'company_name', 'description', 'created_at')->orderByDesc('created_at')->get();
+        $jobs = DB::table('post_jobs')->where('employer_id', Auth::id())->select('id', 'hire_position', 'company_name', 'description','hire_logo', 'created_at')->orderByDesc('created_at')->get();
         $count = DB::table('post_jobs')->where('employer_id', Auth::id())->count();
         return view('employer/jobsManagement/showJob', [
             'postJobs' => $jobs,
@@ -34,9 +35,11 @@ class PostJobController extends Controller
     {
         $hardskills = DB::table('hardskills')->get();
         $softskills = DB::table('softskills')->get();
-        return view('employer/jobsManagement/createJob', [
+        $images= DB::table('employers')->where('employer_id','=',Auth::id())->get()[0];
+        return view('employer/jobsManagement/createJob',[
             'hardskills' => $hardskills,
             'softskills' => $softskills,
+            'images' => $images,
         ]);
     }
 
@@ -48,9 +51,13 @@ class PostJobController extends Controller
      */
     public function store(PostJobRequest $request)
     {
+        $hire_logo = $request->file('hire_logo')->getClientOriginalName();
+        $hire_logo=Str::random(15).$hire_logo;
+        $request->file('hire_logo')->move(public_path('hire_logo'),$hire_logo);
+
         $postJob = new PostJob;
         $postJob->employer_id = Auth::id();
-        $postJob->hire_logo = $request->hire_logo;
+        $postJob->hire_logo = $hire_logo;
         $postJob->hire_position = $request->hire_position;
         $postJob->company_name = $request->company_name;
         $postJob->description = $request->description;

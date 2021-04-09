@@ -4,26 +4,28 @@
     <div class="d-flex justify-content-between align-items-center bg-warning">
         <p class="h6 m-2 font-weight-bold">Job Management ({{ $count }})</p>
         <a href="{{ route('job.create') }}" class="text-dark font-weight-bold mr-2 mr-md-4"><i
-                class="fas fa-plus-square mr-2"></i>Tạo <span class="d-none d-sm-inline">Công Việc</span></a>
+                class="fas fa-plus-square mr-2"></i>Create <span class="d-none d-sm-inline">New Job</span></a>
     </div>
     <div class="d-flex mt-4 row justify-content-around">
         @foreach ($postJobs as $job)
         <div class="col-10 col-md-5 border shadow d-flex align-items-center mb-3">
             <div class="col-2 my-3 p-0">
-                <img src="https://jobsgo.vn/cv_template/assets/images/theme/default.png" alt="" width="100%"
-                    height="100%" class="rounded">
+                <img src="{{ asset("hire_logo/$job->hire_logo") }}" alt="" width="100%" height="100%" class="rounded">
             </div>
-            <div class="col-10">
+            <div class="col-10 my-2">
                 <p class="h6 font-weight-bold">{{ $job->hire_position }}</p>
                 <p class="h6">{{ $job->company_name }}</p>
                 <p class="h6 text-truncate">{{ $job->description }}</p>
                 <p class="h6"><i class="far fa-calendar-alt mr-2"></i>{{ $job->created_at }}</p>
+                <a href="{{ route('job.show',"$job->id") }}" class="text-decoration-none text-dark mr-3"><i
+                        class="fas fa-info-circle mr-2"></i>Info Job</a>
                 <a href="{{ route('job.edit',"$job->id") }}" class="text-decoration-none text-dark mr-3"><i
-                        class="fas fa-edit mr-2"></i>Chỉnh sửa</a>
+                        class="fas fa-edit mr-2"></i>Edit</a>
                 <a href="{{ route('job.destroy',"$job->id") }}" class="text-decoration-none text-dark" onclick="event.preventDefault();
                                                     document.getElementById('delete-resume').submit();"><i
-                        class="fas fa-trash mr-2"></i>Xóa Công việc</a>
-                <form id="delete-resume" action="{{ route('job.destroy',"$job->id") }}" method="post" style="display: none;">
+                        class="fas fa-trash mr-2"></i>Delete</a>
+                <form id="delete-resume" action="{{ route('job.destroy',"$job->id") }}" method="post"
+                    style="display: none;">
                     @method('DELETE')
                     @csrf
                 </form>

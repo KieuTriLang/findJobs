@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Models\Resume;
 
 class ResumeController extends Controller
@@ -51,8 +52,16 @@ class ResumeController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'avatar_resume' => 'required|image|mimes:jpeg,png,jpg,svg|max:102400',
+        ]);
+        $avatar_resume = $request->file('avatar_resume')->getClientOriginalName();
+        $avatar_resume=Str::random(30).$avatar_resume;
+        $request->file('avatar_resume')->move(public_path('avatar_resume'),$avatar_resume);
+
         $resume = new Resume;
         $resume->user_id = Auth::id();
+        $resume->avatar_resume = $avatar_resume;
         $resume->cv_name = $request->cv_name;
         $resume->name = $request->name;
         $resume->career_name = $request->career_name;

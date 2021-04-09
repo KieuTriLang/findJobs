@@ -111,7 +111,7 @@
 
     <div class="container-fluid mt-5">
         <div class="d-flex mt-5 ml-3">
-            <h4 class="mb-2">{{ $quantityJob }} Việc Làm</h4>
+            <h4 class="mb-2">All: {{ $quantityJob }} Jobs </h4>
         </div>
         <div class="row mx-2 mt-3">
             <div class="col-12  col-sm-9 col-md-9 col-lg-9">
@@ -121,7 +121,7 @@
                         <div class="job-box p-1">
                             <div class="row border border-muted item">
                                 <div class="col-3 col-sm-3 col-md-3 col-lg-3  p-1 p-sm-2 p-md-2 p-lg-2">
-                                    <img class="img-fluid" src="" alt="company">
+                                    <img class="img-fluid" src="{{ asset("hire_logo/$job->hire_logo") }}" alt="company">
                                 </div>
                                 <div class="col-9 col-sm-9 col-md-9 col-lg-9 p-2">
                                     <a href="#" class="text-danger"><h5 class="mb-1 text-hiden mt-3">{{ $job->hire_position }}</h5></a>

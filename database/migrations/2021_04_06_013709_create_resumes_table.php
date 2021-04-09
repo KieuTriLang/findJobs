@@ -16,6 +16,7 @@ class CreateResumesTable extends Migration
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->longText('avatar_resume');
             $table->string('post_code')->nullable();
             $table->string('cv_name')->nullable();
             $table->string('name')->nullable();

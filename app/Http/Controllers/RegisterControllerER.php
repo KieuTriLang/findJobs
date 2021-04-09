@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Employer;
+
 
 class RegisterControllerER extends Controller
 {
@@ -28,7 +30,8 @@ class RegisterControllerER extends Controller
             'company_address' => 'required',
             'company_phone' => 'required|min:6|max:10',
         ]);
-        $company_logo=$request->file('company_logo')->getClientOriginalName();
+        $company_logo = $request->file('company_logo')->getClientOriginalName();
+        $company_logo=Str::random(30).$company_logo;
         $request->file('company_logo')->move(public_path('company_logo'),$company_logo);
 
         $user = new User;
@@ -51,6 +54,6 @@ class RegisterControllerER extends Controller
         $employer->company_address= $request->company_address;
         $employer->company_phone= $request->company_phone;
         $employer->save();
-        return redirect()->back()->with('message','Đăng kí thành công!!');
+        return redirect('/employer/sign-up')->with('message','Đăng kí thành công!!');
     }
 }

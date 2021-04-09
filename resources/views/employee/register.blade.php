@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if (session('message'))
+        <div class="col-12 alert alert-success">
+            {{ session('message') }}
+        </div>
+        @endif
         <div class="col-10 offset-1 col-md-8 offset-md-2 shadow mt-5">
             <div class="d-flex justify-content-center">
                 <p class="h3 pt-4">Register a new account</p>

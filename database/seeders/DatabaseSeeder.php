@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             softskillseeder::class,
             Languageseeder::class,
             hobbyseeder::class,
+            Cityseeder::class,
         ]);
     }
 }
