@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterControllerER;
 use App\Http\Controllers\RegisterControllerEE;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\PostJobController;
+use App\Http\Controllers\EmploymentController;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 /*
@@ -24,7 +25,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 Route::get('/',[HomeController::Class,'employeeHome'])->name('employee.home');
 
-
+Route::get('/find-job',[EmploymentController::class,'index'])->name('employee.findjob');
 Route::resource('resume',ResumeController::class)->middleware('auth');
 
 Route::get('faq',function (){

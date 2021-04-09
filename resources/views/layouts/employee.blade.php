@@ -33,7 +33,7 @@
                         <a class="nav-link font-weight-bold active" href="{{ url('/') }}">HOME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="{{ route('findJob') }}">FIND JOBS</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employee.findjob') }}">FIND JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
                         <a class="nav-link font-weight-bold" href="#">CREATE RESUME</a>
