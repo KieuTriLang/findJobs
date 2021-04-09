@@ -40,7 +40,7 @@
                         <a class="nav-link font-weight-bold" href="#">FIND RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">FAQ</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employer.faq') }}">FAQ</a>
                     </li>
                     @guest
                     <li class="nav-item">
@@ -63,7 +63,7 @@
                                 <i class="fas fa-user-circle mr-2"></i>
                                 Account Infomation
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a href="{{ route('job.index') }}" class="dropdown-item">
                                 <i class="fas fa-tasks mr-2"></i>
                                 Jobs Management
                             </a>

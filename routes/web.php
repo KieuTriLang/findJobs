@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterControllerER;
 use App\Http\Controllers\RegisterControllerEE;
+use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\PostJobController;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,12 @@ use App\Http\Controllers\RegisterControllerEE;
 
 Route::get('/',[HomeController::Class,'employeeHome'])->name('employee.home');
 
+
+Route::resource('resume',ResumeController::class)->middleware('auth');
+
+Route::get('faq',function (){
+    return view('employee/faq');
+})->name('employee.faq');
 
 Route::get('sign-in', [LoginController::class,'viewEmployee'])->name('employee.viewLogIn');
 Route::post('sign-in', [LoginController::class, 'login'])->name('employee.login');
@@ -47,6 +56,7 @@ Route::group(['prefix' => 'employer'], function () {
         return view('employer/FAQ');
     })->name('employer.faq');
 
+    Route::resource('job',PostJobController::class)->middleware('auth');
     Route::get('sign-in', [LoginController::class, 'viewEmployer'])->name('employer.viewLogIn');
     Route::post('sign-in', [LoginController::class, 'login'])->name('employer.login');
     Route::post('/', [LoginController::class, 'logoutEmployer'])->name('employer.logout');

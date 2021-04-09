@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Employer;
@@ -25,28 +26,20 @@ class RegisterControllerER extends Controller
             'contact_name' => 'required',
             'position'=>'required',
             'company_address' => 'required',
-            'company_phone' => 'required',
+            'company_phone' => 'required|min:6|max:10',
         ]);
         $company_logo=$request->file('company_logo')->getClientOriginalName();
         $request->file('company_logo')->move(public_path('company_logo'),$company_logo);
-
-        $i=0;
-        $user_code="employer$i";
-        while(User::where('user_code','=',$user_code)->count()>0){
-            $i++;
-            $user_code="employer$i";
-        }
 
         $user = new User;
         $user->name = $request->company_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->user_code = $user_code;
         $user->user_type = $request->user_type;
         $user->save();
 
         $employer = new Employer;
-        $employer->employer_code = $request->user_code;
+        $employer->employer_id = DB::table('users')->where('email','=',$request->email)->select('id')->get()[0]->id;
         $employer->company_name = $request->company_name;
         $employer->company_size = $request->company_size;
         $employer->tax = $request->tax;
@@ -58,6 +51,6 @@ class RegisterControllerER extends Controller
         $employer->company_address= $request->company_address;
         $employer->company_phone= $request->company_phone;
         $employer->save();
-        return redirect()->back();
+        return redirect()->back()->with('message','Đăng kí thành công!!');
     }
 }

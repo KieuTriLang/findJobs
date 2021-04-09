@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
-    @yield('additionall-Style')
+    @yield('additional-Style')
 </head>
 
 <body>
@@ -36,10 +36,10 @@
                         <a class="nav-link font-weight-bold" href="{{ route('findJob') }}">FIND JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">POST RESUME</a>
+                        <a class="nav-link font-weight-bold" href="#">CREATE RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">FAQ</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employee.faq') }}">FAQ</a>
                     </li>
                     @guest
                     <li class="nav-item">
@@ -62,7 +62,7 @@
                                 <i class="fas fa-user-circle mr-2"></i>
                                 Account Infomation
                             </a>
-                            <a href="#" class="dropdown-item">
+                            <a href="{{ route('resume.index') }}" class="dropdown-item">
                                 <i class="fas fa-tasks mr-2"></i>
                                 Resume Management
                             </a>
@@ -141,7 +141,7 @@
                 FindTalent JSC</div>
         </div>
     </footer>
-    @yield('additional-Scripts')
+    @yield('additional-Script')
 </body>
 
 </html>

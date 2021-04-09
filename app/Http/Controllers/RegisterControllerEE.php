@@ -20,17 +20,10 @@ class RegisterControllerEE extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-        $i=0;
-        $user_code="employee$i";
-        while(User::where('user_code','=',$user_code)->count()>0){
-            $i++;
-            $user_code="employee$i";
-        }
         $user= new User;
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
-        $user->user_code=$user_code;
         $user->user_type=$request->user_type;
         $user->save();
         return redirect()->back();
