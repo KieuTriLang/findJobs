@@ -26,6 +26,6 @@ class RegisterControllerEE extends Controller
         $user->password=Hash::make($request->password);
         $user->user_type=$request->user_type;
         $user->save();
-        return redirect()->back();
+        return redirect('/sign-up')->with("message","Đăng kí thành công !!");
     }
 }

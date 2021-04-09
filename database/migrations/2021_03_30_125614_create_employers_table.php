@@ -21,7 +21,7 @@ class CreateEmployersTable extends Migration
             $table->string('tax')->nullable();
             $table->string('website');
             $table->string('company_summary')->nullable();
-            $table->string('company_logo');
+            $table->longText('company_logo');
             $table->string('contact_name');
             $table->string('position');
             $table->string('company_address');

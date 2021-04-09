@@ -4,13 +4,13 @@
 @endsection
 @section('content')
 <div class="container-fluid mt-3">
-    <form action="{{ route('job.store') }}" method="post">
+    <form action="{{ route('job.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
             <div class="col-3 p-0">
-                <img src="https://jobsgo.vn/uploads/avatar/202104/1170038_20210402133110.jpg" alt="" class="w-100 h-100"
-                    id="output" onclick="document.getElementById('avatar').click()">
-                <input onchange="preview(event)" type="file" name="hire_logo" id="avatar"
+                <img src="{{ asset("hire_logo/hire_logo.png") }}" alt="" class="w-100 h-100"
+                    id="output" onclick="document.getElementById('hire_logo').click()">
+                <input onchange="preview(event)" type="file" name="hire_logo" id="hire_logo"
                     style="color:transparent;display:none;">
             </div>
 

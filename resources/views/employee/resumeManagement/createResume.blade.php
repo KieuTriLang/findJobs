@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="container-fluid mt-3">
-    <form action="{{ route('resume.store') }}" method="post">
+    <form action="{{ route('resume.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="d-flex justify-content-between align-items-center bg-primary">
             <input type="text" name="cv_name" id="titleResume" class="col-3 text-light border-0 h3 pt-2"
@@ -15,17 +15,17 @@
         <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
 
             <div class="col-3 p-0">
-                <img src="https://jobsgo.vn/uploads/avatar/202104/1170038_20210402133110.jpg" alt="" class="w-100 h-100"
-                    id="output" onclick="document.getElementById('avatar').click()">
-                <input onchange="preview(event)" type="file" name="avatar" id="avatar"
-                    style="color:transparent;display:none;">
+                <img src="{{ asset('avatar_resume/imgProfile.jpg') }}" alt="" class="w-100 h-100"
+                    id="output" onclick="document.getElementById('avatar_resume').click()">
+                <input onchange="preview(event)" type="file" name="avatar_resume" id="avatar_resume"
+                    style="color:transparent;display:none;" value="{{ asset('avatar_resume/imgProfile.jpg') }}">
             </div>
 
             <div class="col-6 d-flex flex-column">
                 <input type="text" name="name" id="name" class="col-12 text-light border-0 h3 pt-2"
                     style="background-color:transparent;" placeholder="Họ và tên">
                 <input type="text" name="career_name" id="careerName" class="col-12 text-light border-0 h5 pt-2"
-                    style="background-color:transparent;" placeholder="vị trí mong muốn">
+                    style="background-color:transparent;" placeholder="Vị trí mong muốn">
                 <div class="d-flex align-items-center">
                     <label for="" class="m-0"><i class="far fa-envelope mr-2"></i></label>
                     <input type="text" name="email" id="email" class="col-12 text-light border-0"

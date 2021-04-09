@@ -29,6 +29,7 @@ class PostJobRequest extends FormRequest
             'description'=>'required',
             'salary'=> 'required',
             'location'=>'required',
+            'hire_logo' => 'required|image|mimes:jpeg,png,jpg,svg|max:102400',
         ];
     }
 }

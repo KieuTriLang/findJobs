@@ -18,7 +18,7 @@ class CreatePostJobsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('employer_id');
 
-            $table->string('hire_logo')->nullable();
+            $table->longText('hire_logo')->nullable();
             $table->string('hire_position');
             $table->string('company_name');
             $table->string('description');

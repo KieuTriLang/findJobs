@@ -16,9 +16,13 @@
 
 <body>
     <div class="container-fluid m-0 p-0 sticky-top bg-dark">
+        {{-- @if (Auth::check())
+            <p class="d-none"></p>
+        @else --}}
         <a href="{{ route('employer.home') }}"
             class="btn btn-outline-warning font-weight-bold p-1 col-md-6 offset-md-3 col-4 offset-4">Recruiter <span
                 class="d-md-inline d-none">: Post Job or Find Talent</span></a>
+        {{-- @endif --}}
         <nav class="navbar navbar-expand-md bg-dark navbar-dark py-0">
             <a class="navbar-brand ml-md-5 pt-2 " href="{{ url('/') }}">
                 <h2><span class="text-primary font-weight-bold">Find</span><span
