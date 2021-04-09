@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>FindJobs</title>
@@ -34,7 +33,7 @@
                         <a class="nav-link font-weight-bold active" href="{{ url('/') }}">HOME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="{{ route('findJob') }}">FIND JOBS</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('employee.findjob') }}">FIND JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
                         <a class="nav-link font-weight-bold" href="#">CREATE RESUME</a>
