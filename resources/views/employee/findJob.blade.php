@@ -121,13 +121,13 @@
                         <div class="job-box p-1">
                             <div class="row border border-muted item">
                                 <div class="col-3 col-sm-3 col-md-3 col-lg-3  p-1 p-sm-2 p-md-2 p-lg-2">
-                                    <img class="img-fluid" src="{{ asset("hire_logo/$job->hire_logo") }}" alt="company">
+                                    <img class="img-fluid" src="{{ asset("company_logo/$job->company_logo") }}" alt="company">
                                 </div>
                                 <div class="col-9 col-sm-9 col-md-9 col-lg-9 p-2">
-                                    <a href="#" class="text-danger"><h5 class="mb-1 text-hiden mt-3">{{ $job->hire_position }}</h5></a>
+                                    <a href="{{ route('employee.detailJob',["$job->id","$job->employer_id"]) }}" class="text-danger"><h5 class="mb-1 text-hiden mt-3">{{ $job->hire_position }}</h5></a>
                                     <a href="#" class="h6 d-block text-secondary mb-1">{{ $job->company_name }}</a>
                                     <span class="font-size"><i class="fas fa-dollar-sign mr-1"></i>{{ $job->salary }}&ensp;</span>
-                                    <span class="font-size"><i class="fas fa-map-marker-alt mr-1"></i>{{ $job->location }}&ensp;</span>
+                                    <span class="font-size"><i class="fas fa-map-marker-alt mr-1"></i>{{ $job->location }}&ensp;</span><br>
                                     <span class="font-size"><i class="far fa-clock mr-1"></i>{{ $job->created_at }}</span>&ensp;
                                     <div class="tg-themetag tg-featuretag platinum">Hot</div>
                                 </div>

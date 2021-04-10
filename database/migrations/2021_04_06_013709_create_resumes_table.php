@@ -29,12 +29,12 @@ class CreateResumesTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('skype')->nullable();
             $table->string('career_target')->nullable();
-            $table->string('work_exp')->nullable();
-            $table->string('education')->nullable();
-            $table->string('activities')->nullable();
-            $table->string('awards')->nullable();
-            $table->string('reference')->nullable();
-            $table->string('certificate')->nullable();
+            $table->longText('work_exp')->nullable();
+            $table->longText('education')->nullable();
+            $table->longText('activities')->nullable();
+            $table->longText('awards')->nullable();
+            $table->longText('reference')->nullable();
+            $table->longText('certificate')->nullable();
 
             $table->timestamps();
 

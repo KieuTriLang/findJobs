@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.css') }}" rel="stylesheet">
-    @yield('additionall-Style')
+    @yield('additional-Style')
 </head>
 
 <body>
@@ -39,7 +39,7 @@
                         <a class="nav-link font-weight-bold active" href="{{ route('employer.home') }}">HOME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">POST JOBS</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('job.create') }}">POST JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
                         <a class="nav-link font-weight-bold" href="#">FIND RESUME</a>

@@ -1,14 +1,14 @@
-@extends('layouts/employer')
+@extends('layouts/employee')
 @section('additional-Style')
 <link rel="stylesheet" href="{{ asset('css/detailJ.css') }}">
 @endsection
 @section('content')
 <div class="col-11 mx-auto mt-4 border p-0 rounded">
     <div class="bg-dark text-white d-flex flex-column align-items-center">
-        <img src="https://jobsgo.vn/media/img/employer/11659-100x100.jpg" alt="" class="rounded mt-3" width="100px"
+        <img src="{{ asset("company_logo/$employers->company_logo") }}" alt="" class="rounded mt-3" width="100px"
             height="100px" />
         <p class="h6 font-weight-bold mt-3">Chào mừng bạn đến với</p>
-        <p class="h5 font-weight-bold mt-1">Công Ty TNHH Bảo Hiểm Nhân Thọ AIA (Team AIA Exchange) </p>
+        <p class="h5 font-weight-bold mt-1">{{ $employers->company_name }}</p>
     </div>
     <div class="d-flex">
         <div class="col-12 col-md-8 p-0 border">
@@ -23,13 +23,11 @@
             </div>
         </div>
         <div class="col-12 col-md-4 border-bottom">
-            <div class="h5 font-weight-bold pt-4">CÔNG TY TNHH BẢO HIỂM NHÂN THỌ AIA (TEAM AIA EXCHANGE)</div>
-            <div class="h6"><i class="fas fa-map-marker-alt mr-2"></i>CGV Vincom Center Đồng Khởi, Lê Thánh Tôn, Bến
-                Nghé, Quận 1, Thành phố Hồ Chí Minh</div>
-            <div class="h6"><i class="fas fa-globe-americas mr-2"></i>http://www.aia.com.vn/vi/index.html</div>
-            <div class="h6"><i class="fas fa-users mr-2"></i>20-50 nhân viên</div>
-            <div class="h6">AIA Việt Nam là thành viên của Tập đoàn AIA, nhà cung cấp những sản phẩm bảo hiểm nhân thọ
-                giúp mang lại các giải pháp bảo vệ tài chính và sự an tâm về tương lai cho khách hàng.</div>
+            <div class="h5 font-weight-bold pt-4">{{ $employers->company_name }}</div>
+            <div class="h6"><i class="fas fa-map-marker-alt mr-2"></i>{{ $employers->company_address }}</div>
+            <div class="h6"><i class="fas fa-globe-americas mr-2"></i>{{ $employers->website }}</div>
+            <div class="h6"><i class="fas fa-users mr-2"></i>{{ $employers->company_size }} nhân viên</div>
+            <div class="h6">{{ $employers->company_summary}}.</div>
         </div>
         <div class="popup" id="popup-1">
             <div class="overlay"></div>
@@ -45,12 +43,6 @@
     </div>
 </div>
 @endsection
-
-@section("additional-Scripts")
-{{-- <script src="{{ asset("js/detailJ.js") }}"></script> --}}
-<script type="text/javascript">
-    function togglePopup() {
-    document.getElementById("popup-1").classList.toggle("active");
-}
-</script>
+@section('additional-Scripts')
+    <script src="{{ asset("js/detailJ.js") }}"></script>
 @endsection

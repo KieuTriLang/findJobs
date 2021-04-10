@@ -10,7 +10,7 @@
         @foreach ($postJobs as $job)
         <div class="col-10 col-md-5 border shadow d-flex align-items-center mb-3">
             <div class="col-2 my-3 p-0">
-                <img src="{{ asset("hire_logo/$job->hire_logo") }}" alt="" width="100%" height="100%" class="rounded">
+                <img src="{{ asset("company_logo/$company_logo->company_logo") }}" alt="" width="100%" height="100%" class="rounded">
             </div>
             <div class="col-10 my-2">
                 <p class="h6 font-weight-bold">{{ $job->hire_position }}</p>
