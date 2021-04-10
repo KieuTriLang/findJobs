@@ -1,4 +1,7 @@
 @extends('layouts.employer')
+<head>
+    <title>FindJobs - Employer - Trang chủ</title>
+</head>
 @section('content')
 <div id="carousel" class="carousel slide" data-ride="carousel">
 

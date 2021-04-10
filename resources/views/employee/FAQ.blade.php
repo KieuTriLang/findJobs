@@ -1,13 +1,13 @@
 @php
-    use Backpack\CRUD\app\Models\Traits\CrudTrait;
-        $question =\App\Models\question::all();
+    $question =\App\Models\question::all();
 @endphp
 @extends('layouts.employee')
 <head>
     <title>FindJobs - Câu hỏi thường gặp</title>
 </head>
-@section('additionall-Style')
+@section('additional-Style')
     <link href="{{ asset("css/faq.css")}}" rel="stylesheet" type="text/css">
+
 @endsection
 @section('content')
     <div class="container pl-0">

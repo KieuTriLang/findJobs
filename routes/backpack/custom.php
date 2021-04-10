@@ -21,4 +21,15 @@ Route::group([
     Route::crud('user', 'UserCrudController');
     Route::crud('question', 'QuestionCrudController');
     Route::crud('questions', 'QuestionsCrudController');
+    Route::crud('failed_job', 'Failed_jobCrudController');
+    Route::crud('industrie', 'IndustrieCrudController');
+    Route::crud('hardskill', 'HardskillCrudController');
+    Route::crud('softskill', 'SoftskillCrudController');
+    Route::crud('basicform', 'BasicformCrudController');
+    Route::crud('job', 'JobCrudController');
+    Route::crud('post_job', 'Post_jobCrudController');
+    Route::crud('resume', 'ResumeCrudController');
+    Route::crud('language', 'LanguageCrudController');
+    Route::crud('hobbies', 'HobbiesCrudController');
+    Route::crud('citie', 'CitieCrudController');
 }); // this should be the absolute last line of this file
