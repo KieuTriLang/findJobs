@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             userseeder::class,
             employerseeder::class,
             postjobseeder::class,
+            question::class,
         ]);
     }
 }

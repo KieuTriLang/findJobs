@@ -17,7 +17,7 @@ class CreateResumesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->longText('avatar_resume');
-            $table->string('post_code')->nullable();
+            $table->unsignedBigInteger('post_code')->nullable();
             $table->string('cv_name')->nullable();
             $table->string('name')->nullable();
             $table->string('career_name')->nullable();
