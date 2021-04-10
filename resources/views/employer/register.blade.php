@@ -78,16 +78,16 @@
                         <label for="company-size">Company Size</label>
                         <select name="company_size" id="company-size" class="form-control">
                             <option value="">--Select--</option>
-                            <option value="1" selected="selected">Less Than 10</option>
-                            <option value="2">10 - 24</option>
-                            <option value="3">25 - 99</option>
-                            <option value="4">100 - 499</option>
-                            <option value="5">500 - 999</option>
-                            <option value="6">1000 -4999</option>
-                            <option value="7">5000 - 9999</option>
-                            <option value="8">10000 - 19999</option>
-                            <option value="9">20000 - 49999</option>
-                            <option value="10">More than 50000</option>
+                            <option value="Less Than 10" selected="selected"></option>
+                            <option value="10 - 24">10 - 24</option>
+                            <option value="25 - 99">25 - 99</option>
+                            <option value="100 - 499">100 - 499</option>
+                            <option value="500 - 999">500 - 999</option>
+                            <option value="1000 -4999">1000 -4999</option>
+                            <option value="5000 - 9999">5000 - 9999</option>
+                            <option value="10000 - 19999">10000 - 19999</option>
+                            <option value="20000 - 49999">20000 - 49999</option>
+                            <option value="More than 50000">More than 50000</option>
                         </select>
                     </div>
                 </div>

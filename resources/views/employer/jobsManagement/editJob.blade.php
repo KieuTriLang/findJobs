@@ -8,30 +8,29 @@
         @csrf
         @method('PUT')
         <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
-            <div class="col-3 p-0">
-                <img src="https://jobsgo.vn/uploads/avatar/202104/1170038_20210402133110.jpg" alt="" class="w-100 h-100"
-                    id="output" onclick="document.getElementById('avatar').click()">
-                <input onchange="preview(event)" type="file" name="hire_logo" id="avatar"
-                    style="color:transparent;display:none;">
-            </div>
-
             <div class="col-9 d-flex flex-column">
-                <input type="text" name="hire_position" id="hire_position"
-                    class="col-12 text-light border-0 h5 pt-2 @error ('hire_position') is-invalid @enderror"
-                    style="background-color:transparent;" placeholder="Vị trí tuyển dụng" value="{{ $postJobs->hire_position }}">
-                @error('hire_position')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                <input type="text" name="company_name" id="company_name"
-                    class="col-12 text-light border-0 h5 pt-2 @error ('company_name') is-invalid @enderror"
-                    style="background-color:transparent;" placeholder="Tên công ty/ chi nhánh cần tuyển dụng" value="{{ $postJobs->company_name }}">
-                @error('company_name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <div class="col-12 mt-3">
+                    <i class="h4 fas fa-user"></i>
+                    <input type="text" name="hire_position" id="hire_position"
+                        class="col-10 text-light border-0 h5 pt-2 @error ('hire_position') is-invalid @enderror"
+                        style="background-color:transparent;" placeholder="Vị trí tuyển dụng" value="{{ $postJobs->hire_position }}">
+                    @error('hire_position')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="col-12 mt-3">
+                    <i class="h4 fas fa-building"></i>
+                    <input type="text" name="company_name" id="company_name"
+                        class="col-10 text-light border-0 h5 pt-2 @error ('company_name') is-invalid @enderror"
+                        style="background-color:transparent;" placeholder="Tên công ty/ chi nhánh cần tuyển dụng" value="{{ $postJobs->company_name }}">
+                    @error('company_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
 
             </div>
             <div class="col-12 bg-white text-dark pt-1">
@@ -118,6 +117,18 @@
                         </span>
                         @enderror
                     </div>
+                    <div class="col-12">
+                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Quyền lợi được hưởng</label>
+                        <hr class=" bg-dark">
+                        <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                            name="benefit" id="" class="col-12 border-0 @error ('benefit') is-invalid @enderror"
+                            placeholder="Quyền lợi mà được hưởng khi ứng tuyển vào công ty ...">{{ $postJobs->benefit }}</textarea>
+                    </div>
+                    @error('benefit')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-end bg-light p-5">

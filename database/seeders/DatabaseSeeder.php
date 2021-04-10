@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             Languageseeder::class,
             hobbyseeder::class,
             Cityseeder::class,
+            userseeder::class,
+            employerseeder::class,
+            postjobseeder::class,
         ]);
     }
 }
