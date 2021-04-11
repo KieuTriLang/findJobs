@@ -17,7 +17,6 @@ class CreateResumesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->longText('avatar_resume');
-            $table->unsignedBigInteger('post_code')->nullable();
             $table->string('cv_name')->nullable();
             $table->string('name')->nullable();
             $table->string('career_name')->nullable();
@@ -34,16 +33,17 @@ class CreateResumesTable extends Migration
             $table->longText('activities')->nullable();
             $table->longText('awards')->nullable();
             $table->longText('reference')->nullable();
+            $table->longText('hardskills')->nullable();
+            $table->longText('softskills')->nullable();
             $table->longText('certificate')->nullable();
+            $table->longText('language')->nullable();
+            $table->longText('hobby')->nullable();
 
             $table->timestamps();
 
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users');
-            $table->foreign('post_code')
-                    ->references('id')
-                    ->on('post_jobs');
         });
     }
 

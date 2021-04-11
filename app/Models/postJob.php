@@ -9,4 +9,7 @@ class PostJob extends Model
 {
     use HasFactory;
     protected $table="post_jobs";
+    public function resumes(){
+        return $this->belongsToMany(Resume::class,'jobs_resumes');
+    }
 }

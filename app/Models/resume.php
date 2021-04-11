@@ -12,7 +12,7 @@ class Resume extends Model
     public function user(){
         return $this->belongsTo(User::class,'user_code','id');
     }
-    public function getAllResume(){
-
+    public function postJobs(){
+        return $this->belongsToMany(PostJob::class,'jobs_resumes');
     }
 }
