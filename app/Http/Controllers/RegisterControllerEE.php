@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 
@@ -26,6 +27,10 @@ class RegisterControllerEE extends Controller
         $user->password=Hash::make($request->password);
         $user->user_type=$request->user_type;
         $user->save();
+
+        DB::table('employees')->insert([
+            'employee_id'=> DB::table('users')->where('email','=',$request->email)->select('id')->get()[0]->id,
+        ]);
         return redirect('/sign-up')->with("message","Đăng kí thành công !!");
     }
 }
