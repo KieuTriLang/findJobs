@@ -17,7 +17,6 @@ class CreatePostJobsTable extends Migration
         Schema::create('post_jobs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employer_id');
-
             $table->string('hire_position');
             $table->string('company_name');
             $table->longText('description');

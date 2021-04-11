@@ -16,7 +16,7 @@
         <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
 
             <div class="col-3 p-0">
-                <img src="https://jobsgo.vn/uploads/avatar/202104/1170038_20210402133110.jpg" alt="" class="w-100 h-100"
+                <img src="{{ asset("avatar_resume/medium$resume->avatar_resume") }}" alt="" class="w-100 h-100"
                     id="output" onclick="document.getElementById('avatar').click()">
                 <input onchange="preview(event)" type="file" name="avatar" id="avatar"
                     style="color:transparent;display:none;">

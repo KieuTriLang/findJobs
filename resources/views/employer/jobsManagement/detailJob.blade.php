@@ -10,7 +10,7 @@
         <p class="h6 font-weight-bold mt-3">Chào mừng bạn đến với</p>
         <p class="h5 font-weight-bold mt-1">Công Ty TNHH Bảo Hiểm Nhân Thọ AIA (Team AIA Exchange) </p>
     </div>
-    <div class="d-flex">
+    <div class="d-flex row">
         <div class="col-12 col-md-8 p-0 border">
             <div class="pt-4 pl-2">
                 <p class="h3 font-weight-bolder">Chuyên Viên Quan Hệ Khách Hàng ( Thu Nhập Cố Định 15 TR + Thưởng Lên
@@ -45,12 +45,6 @@
     </div>
 </div>
 @endsection
-
-@section("additional-Scripts")
-{{-- <script src="{{ asset("js/detailJ.js") }}"></script> --}}
-<script type="text/javascript">
-    function togglePopup() {
-    document.getElementById("popup-1").classList.toggle("active");
-}
-</script>
+@section('additional-Scripts')
+    <script src="{{ asset('js/detailJ.js') }}"></script>
 @endsection

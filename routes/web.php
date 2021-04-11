@@ -27,6 +27,8 @@ Route::get('/',[HomeController::Class,'employeeHome'])->name('employee.home');
 
 Route::get('/find-job',[EmploymentController::class,'index'])->name('employee.findjob');
 Route::get('/find-job/{post_id}/{employer_id}',[EmploymentController::class,'detailJob'])->name('employee.detailJob')->middleware('auth');
+Route::post('/find-job/{job_id}/{cv_id}',[EmploymentController::class,'applyJob'])->name('employee.applyJob');
+Route::delete('/find-job/{job_id}/{user_id}',[EmploymentController::class,'unApply'])->name('employee.unApply');
 Route::resource('resume',ResumeController::class)->middleware('auth');
 
 Route::get('faq',function (){

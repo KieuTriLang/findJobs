@@ -40,7 +40,7 @@
                         <a class="nav-link font-weight-bold" href="{{ route('employee.findjob') }}">FIND JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">CREATE RESUME</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('resume.create') }}">CREATE RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
                         <a class="nav-link font-weight-bold" href="{{ route('employee.faq') }}">FAQ</a>

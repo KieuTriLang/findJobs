@@ -8,15 +8,23 @@
         @csrf
         <div class="d-flex justify-content-between align-items-center bg-primary">
             <input type="text" name="cv_name" id="titleResume" class="col-3 text-light border-0 h3 pt-2"
-                style="background-color:transparent;" value="Title CV">
+                style="background-color:transparent;" value="Tên CV">
             <button class="text-light font-weight-bold mr-2 mr-md-4 border-0" style="background-color:transparent;"
                 type="submit"><i class="far fa-save mr-2"></i>Save</button>
         </div>
-        <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
-
+        <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0 rounded">
+            @if ($errors->any())
+            <div class=" col-12 alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="col-3 p-0">
-                <img src="{{ asset('avatar_resume/imgProfile.jpg') }}" alt="" class="w-100 h-100"
-                    id="output" onclick="document.getElementById('avatar_resume').click()">
+                <img src="{{ asset('avatar_resume/imgProfile.jpg') }}" alt="" class="w-100 h-100" id="output"
+                    onclick="document.getElementById('avatar_resume').click()">
                 <input onchange="preview(event)" type="file" name="avatar_resume" id="avatar_resume"
                     style="color:transparent;display:none;" value="{{ asset('avatar_resume/imgProfile.jpg') }}">
             </div>
@@ -70,7 +78,8 @@
                     <label for="job_target" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-user mr-2"></i>MỤC
                         TIÊU NGHỀ NGHIỆP</label>
                     <hr class=" bg-dark">
-                    <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="career_target" id="careerTarget" class="col-12 border-0"
+                    <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                        name="career_target" id="careerTarget" class="col-12 border-0"
                         placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
                 </div>
                 <div class="d-flex row justify-content-around">
@@ -79,35 +88,40 @@
                             <label for="work_experience" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-briefcase mr-2"></i>KINH NGHIỆM LÀM VIỆC</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="work_exp" id="workExp" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                type="text" name="work_exp" id="workExp" class="col-12 border-0"
                                 placeholder="Ghi rõ vị trí, thời gian,nơi công tác, ... "></textarea>
                         </div>
                         <div class="mt-5">
                             <label for="education" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-graduation-cap mr-2"></i>HỌC VẤN</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="education" id="education" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                type="text" name="education" id="education" class="col-12 border-0"
                                 placeholder="Ghi rõ các cấp bậc học đã hoàn thành ..."></textarea>
                         </div>
                         <div class="mt-5">
                             <label for="activity" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-hiking mr-2"></i>HOẠT ĐỘNG</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="activities" id="activities" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                type="text" name="activities" id="activities" class="col-12 border-0"
                                 placeholder="Ghi rõ các hoạt động,sự kiện đã tham gia ..."></textarea>
                         </div>
                         <div class="mt-5">
                             <label for="award" class="h4 font-weight-bolder m-0"><i class="fas fa-crown mr-2"></i>GIẢI
                                 THƯỞNG</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="awards" id="awards" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                type="text" name="awards" id="awards" class="col-12 border-0"
                                 placeholder="Giới thiệu một số thành tựu, giải thưởng đã đạt được ..."></textarea>
                         </div>
                         <div class="mt-5 mb-5">
                             <label for="references" class="h4 font-weight-bolder m-0"><i
                                     class="far fa-user-circle mr-2"></i>NGƯỜI THAM CHIẾU</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="reference" id="references" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                type="text" name="reference" id="references" class="col-12 border-0"
                                 placeholder="Giới thiệu tổng quát về người tham chiếu ..."></textarea>
                         </div>
                     </div>
@@ -117,7 +131,8 @@
                                     class="fas fa-tools mr-2"></i></i>KỸ
                                 NĂNG</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="hardskills" id="hardSkill" class="col-12 border-0"></textarea>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                name="hardskills" id="hardSkill" class="col-12 border-0"></textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
@@ -135,7 +150,8 @@
                             <label for="softskills" class="h4 font-weight-bolder m-0"><i
                                     class="fab fa-battle-net mr-2"></i>KỸ NĂNG MỀM</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="softskills" id="softSkill" class="col-12 border-0"></textarea>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                name="softskills" id="softSkill" class="col-12 border-0"></textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
@@ -153,7 +169,8 @@
                             <label for="certificate" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-award mr-2"></i></i>CHỨNG CHỈ</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' type="text" name="certificate" id="certificate" class="col-12 border-0"
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                type="text" name="certificate" id="certificate" class="col-12 border-0"
                                 placeholder="Giới thiệu tổng quát bản thân, mục tiêu phấn đấu..."></textarea>
                         </div>
 
@@ -162,7 +179,8 @@
                             <label for="language" class="h4 font-weight-bolder m-0"><i
                                     class="fas fa-language mr-2"></i></i>NGÔN NGỮ</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="language" id="language" class="col-12 border-0"></textarea>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                name="language" id="language" class="col-12 border-0"></textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
@@ -178,7 +196,8 @@
                             <label for="hobby" class="h4 font-weight-bolder m-0"><i class="fas fa-gamepad mr-2"></i>SỞ
                                 THÍCH</label>
                             <hr class="bg-dark">
-                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' name="hobby" id="hobby" class="col-12 border-0"></textarea>
+                            <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                                name="hobby" id="hobby" class="col-12 border-0"></textarea>
                             <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <i class="fas fa-plus"></i>
