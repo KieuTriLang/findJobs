@@ -82,6 +82,15 @@ Route::group(['prefix' => 'employer'], function () {
     })->name('employer.faq');
 
     Route::resource('job', PostJobController::class)->middleware('auth');
+
+    Route::prefix('profile')->middleware('auth')->group(function(){
+        Route::get('/',[ProfileController::class, 'profileER'])->name('employer.profile');
+
+        Route::get('/edit',[ProfileController::class, 'profileER_Edit'])->name('employer.profile.edit');
+
+        Route::post('/edit',[ProfileController::class, 'profileER_Update'])->name('employer.profile.update');
+    });
+
     Route::get('sign-in', [LoginController::class, 'viewEmployer'])->name('employer.viewLogIn');
     Route::post('sign-in', [LoginController::class, 'login'])->name('employer.login');
     Route::post('/', [LoginController::class, 'logoutEmployer'])->name('employer.logout');

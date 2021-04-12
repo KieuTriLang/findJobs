@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             employerseeder::class,
             postjobseeder::class,
             question::class,
+            companysizeseeder::class,
         ]);
     }
 }

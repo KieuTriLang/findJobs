@@ -17,20 +17,19 @@
                 <p class="h4 font-weight-bolder mt-3">{{ $info->name }}</p>
                 <p class="h4">{{ $info->position }}</p>
             </div>
-            <div class="d-flex flex-column mt-2 col-md-12 col-8 p-0">
-                <div class="d-flex justify-content-between mt-2">
+            <div class="d-flex flex-column col-md-12 col-sm-6 mt-2 p-0">
+                <div class="d-flex  justify-content-between mt-2">
                     <a href="{{ route('resume.index') }}" class="text-dark ml-2">CV đã tạo</a>
                     <span class="mr-2">{{ $countCV }}</span>
                 </div>
-                <div class="d-flex justify-content-between mt-2">
+                <div class="d-flex  justify-content-between mt-2">
                     <a href="#" class="text-dark ml-2">Công việc đã ứng tuyển</a>
-                    <span class="mr-2">3</span>
+                    <span class="mr-2">0</span>
                 </div>
-                <div class="d-flex justify-content-between mt-2">
+                <div class="d-flex  justify-content-between mt-2">
                     <a href="#" class="text-dark ml-2">Công việc đã lưu</a>
-                    <span class="mr-2">3</span>
+                    <span class="mr-2">0</span>
                 </div>
-
             </div>
         </div>
         <div class="col-12 col-md-8">

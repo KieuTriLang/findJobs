@@ -17,7 +17,7 @@ class CreateEmployersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('employer_id');
             $table->string('company_name');
-            $table->string('company_size');
+            $table->unsignedBigInteger('company_size');
             $table->string('tax')->nullable();
             $table->string('website');
             $table->longText('company_summary')->nullable();
@@ -26,12 +26,19 @@ class CreateEmployersTable extends Migration
             $table->string('position');
             $table->string('company_address');
             $table->string('company_phone');
+            $table->string('location');
             $table->timestamps();
 
             $table->foreign('employer_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->foreign('location')
+                ->references('city_code')
+                ->on('cities');
+            $table->foreign('company_size')
+                ->references('id')
+                ->on('company_sizes');
         });
     }
 
