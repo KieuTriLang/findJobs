@@ -12,4 +12,7 @@ class employee extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function bookmarked_post_jobs(){
+        return $this->belongsToMany(PostJob::class,'bookmark_post_jobs');
+    }
 }

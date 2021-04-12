@@ -28,7 +28,7 @@
                 </div>
                 <div class="d-flex  justify-content-between mt-2">
                     <a href="#" class="text-dark ml-2">Công việc đã lưu</a>
-                    <span class="mr-2">0</span>
+                    <span class="mr-2">{{ $countBM }}</span>
                 </div>
             </div>
         </div>
