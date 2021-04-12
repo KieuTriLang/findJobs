@@ -64,7 +64,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="#" class="dropdown-item">
+                            <a href="{{ route('employer.profile') }}" class="dropdown-item">
                                 <i class="fas fa-user-circle mr-2"></i>
                                 Account Infomation
                             </a>

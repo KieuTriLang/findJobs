@@ -24,6 +24,9 @@
         </ul>
     </div>
     @endif
+    <div class="d-flex justify-content-start">
+        <a href="{{ route('employee.profile') }}"><< Quay lại</a>
+    </div>
     <form action="{{ route('employee.profile.update') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="col-10 mx-auto shadow d-flex row flex-column flex-md-row">

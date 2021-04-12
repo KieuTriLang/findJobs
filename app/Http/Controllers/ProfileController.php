@@ -33,7 +33,7 @@ class ProfileController extends Controller
                     ->get();
                     // dd($info);
         return view('employee/account/editInfo',[
-            'info'=>$info,
+            'info'=>$info[0],
         ]);
     }
     public function profileEE_Update(Request $request)
@@ -62,6 +62,69 @@ class ProfileController extends Controller
                 'current_salary' => $request->current_salary,
                 'desired_salary' => $request->desired_salary,
                 'status_findJob' => $request->status_findJob,
+            ]);
+        return redirect()->back()->with('message','Đã lưu thông tin!!');
+    }
+
+    // profile employer
+    public function profileER()
+    {
+        $info = DB::table('employers')
+                    ->where('employers.employer_id', '=', Auth::id())
+                    ->join('cities','employers.location','cities.city_code')
+                    ->join('company_sizes','employers.company_size','company_sizes.id')
+                    ->select('employers.*','cities.city_name','company_sizes.size')
+                    ->get();
+        // dd($info);
+        $countPJob =  DB::table('post_jobs')->where('employer_id', Auth::id())->count();
+        return view('employer/account/showInfo',[
+            'countPJob' => $countPJob,
+            'info' => $info[0],
+        ]);
+    }
+    public function profileER_Edit()
+    {
+        $info = DB::table('users')
+                    ->where('users.id', '=', Auth::id())
+                    ->join('employers','users.id','employers.employer_id')
+                    ->select('users.name','employers.*')
+                    ->get();
+                    // dd($info);
+        $cities = DB::table('cities')->get();
+        $companySizes= DB::table('company_sizes')->get();
+        return view('employer/account/editInfo',[
+            'info'=>$info[0],
+            'cities'=>$cities,
+            'companySizes'=>$companySizes,
+        ]);
+    }
+    public function profileER_Update(Request $request)
+    {
+        $validated = $request->validate([
+            'avatar_profile' => 'image|mimes:jpeg,png,jpg,svg|max:102400',
+        ]);
+        if ($request->file('company_logo') !== null) {
+            $company_logo = $request->file('company_logo')->getClientOriginalName();
+            $company_logo = Str::random(30) . $company_logo;
+            $resizeImage = Image::make($request->file('company_logo')->getRealPath());
+            $resizeImage->fit(150)->save('company_logo/ee' . $company_logo, 100);
+            DB::table('employers')
+            ->where('employee_id', '=', Auth::id())
+            ->update(['company_logo'=>$company_logo]);
+        }
+        DB::table('employers')
+            ->where('employer_id', '=', Auth::id())
+            ->update([
+                "company_name" => $request->company_name,
+                "company_size" => $request->company_size,
+                "tax" => $request->tax,
+                "website" => $request->website,
+                "company_summary" => $request->company_summary,
+                "contact_name"=>$request->contact_name,
+                "position" => $request->position,
+                "company_address" => $request->company_address,
+                "company_phone"=> $request->company_phone,
+                "location"=> $request->location,
             ]);
         return redirect()->back()->with('message','Đã lưu thông tin!!');
     }

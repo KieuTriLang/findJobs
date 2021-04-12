@@ -15,7 +15,12 @@ class RegisterControllerER extends Controller
 {
     public function create()
     {
-        return view('employer/register');
+        $city = DB::table('cities')->get();
+        $companySizes= DB::table('company_sizes')->get();
+        return view('employer/register',[
+            'cities'=>$city,
+            'company_sizes'=>$companySizes,
+        ]);
     }
     public function store(Request $request)
     {
@@ -29,6 +34,7 @@ class RegisterControllerER extends Controller
             'position'=>'required',
             'company_address' => 'required',
             'company_phone' => 'required|min:6|max:10',
+            'location'=>'required',
         ]);
         $company_logo = $request->file('company_logo')->getClientOriginalName();
         $company_logo=Str::random(30).$company_logo;
@@ -53,6 +59,7 @@ class RegisterControllerER extends Controller
         $employer->position= $request->position;
         $employer->company_address= $request->company_address;
         $employer->company_phone= $request->company_phone;
+        $employer->location= $request->location;
         $employer->save();
         return redirect('/employer/sign-up')->with('message','Đăng kí thành công!!');
     }

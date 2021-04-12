@@ -15,7 +15,7 @@
 
     .popup .content {
         position: absolute;
-        top: 50%;
+        top: 20%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0);
         background: #fff;
@@ -63,6 +63,9 @@
         cursor: pointer;
 
     }
+    .line-height{
+        line-height: 28px;
+    }
 </style>
 @endsection
 @section('content')
@@ -95,6 +98,15 @@
                         class="fas fa-paper-plane mr-2"></i>Ứng tuyển ngay</button>
                 @endif
                 <p class="h6 font-weight-bolder mt-4">Mô tả công việc</p>
+                <p class="h6 line-height">{!! nl2br($jobs->description) !!}</p>
+                <p class="h6 font-weight-bolder mt-4">Yêu cầu công việc</p>
+                <p class="h6 line-height">{!! nl2br($jobs->hardskills) !!}</p>
+                <p class="h6 line-height">{!! nl2br($jobs->softskills) !!}</p>
+                <p class="h6 font-weight-bolder mt-4">Quyền lợi</p>
+                <p class="h6 line-height">{!! nl2br($jobs->benefit) !!}</p>
+                <p class="h6 font-weight-bolder mt-4">Địa điểm làm việc</p>
+                <p class="h6 line-height">{!! nl2br($jobs->location) !!}</p>
+
             </div>
         </div>
         <div class="col-12 col-md-4 border-left">
@@ -102,7 +114,7 @@
             <div class="h6"><i class="fas fa-map-marker-alt mr-2"></i>{{ $employers->company_address }}</div>
             <div class="h6"><i class="fas fa-globe-americas mr-2"></i>{{ $employers->website }}</div>
             <div class="h6"><i class="fas fa-users mr-2"></i>{{ $employers->company_size }} nhân viên</div>
-            <div class="h6">{{ $employers->company_summary}}.</div>
+            <div class="h6 line-height">{{ $employers->company_summary}}.</div>
         </div>
         <div class="popup" id="popup-1">
             <div class="overlay"></div>
@@ -134,10 +146,5 @@
 </div>
 @endsection
 @section('additional-Script')
-{{-- <script src="{{ asset('js/detailJ.js') }}"></script> --}}
-<script>
-    function togglePopup() {
-    document.getElementById("popup-1").classList.toggle("active");
-}
-</script>
+<script src="{{ asset('js/detailJ.js') }}"></script>
 @endsection
