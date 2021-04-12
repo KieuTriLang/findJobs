@@ -19,8 +19,10 @@ class ProfileController extends Controller
                     ->get();
         // dd($info);
         $countCV =  DB::table('resumes')->where('user_id', Auth::id())->count();
+        $countBM =  DB::table('bookmark_post_jobs')->where('user_id', Auth::id())->count();
         return view('employee/account/showInfo',[
             'countCV' => $countCV,
+            'countBM' => $countBM,
             'info' => $info[0],
         ]);
     }

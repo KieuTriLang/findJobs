@@ -63,7 +63,8 @@
         cursor: pointer;
 
     }
-    .line-height{
+
+    .line-height {
         line-height: 28px;
     }
 </style>
@@ -83,20 +84,42 @@
                     Tới 30
                     TR)</p>
                 <p class="h6"><i class="fas fa-dollar-sign mr-2"></i>Mức lương 15 - 25 triệu VNĐ</p>
-                @if (Session::has('success') || count($applied) > 0)
-                <button class="btn btn-outline-danger" onclick="event.preventDefault();
+                <div class="d-flex justify-content-between">
+                    @if (Session::has('success') || count($applied) > 0)
+                    <button class="btn btn-outline-danger" onclick="event.preventDefault();
                 document.getElementById('unapplyJob').submit();">
-                    <i class="fas fa-times mr-2"></i>
-                    Hủy ứng tuyển</button>
-                <form id="unapplyJob" action="{{ route('employee.unApply',["$jobs->id","$user_id"]) }}"
-                    method="POST" style="display: none;">
-                    @method('DELETE')
-                    @csrf
-                </form>
-                @else
-                <button onclick="togglePopup()" class="btn btn-outline-primary"><i
-                        class="fas fa-paper-plane mr-2"></i>Ứng tuyển ngay</button>
-                @endif
+                        <i class="fas fa-times mr-2"></i>
+                        Hủy ứng tuyển</button>
+                    <form id="unapplyJob" action="{{ route('employee.unApply',["$jobs->id","$user_id"]) }}"
+                        method="POST" style="display: none;">
+                        @method('DELETE')
+                        @csrf
+                    </form>
+                    @else
+                    <button onclick="togglePopup()" class="btn btn-outline-primary"><i
+                            class="fas fa-paper-plane mr-2"></i>Ứng tuyển ngay</button>
+                    @endif
+
+                    {{-- bookmark  --}}
+                    @if (Session::has('bookmark') || count($bookmarked) > 0)
+                    <button class="border-0 mr-2" data-toggle="tooltip" data-placement="bottom" title="Đã lưu" style="background:transparent;" onclick="event.preventDefault();
+                document.getElementById('unbookmark').submit();">
+                        <i class="h4 fas fa-star text-success"></i></button>
+                    <form id="unbookmark" action="{{ route('employee.unbookmark',["$jobs->id","$user_id"]) }}"
+                        method="POST" style="display: none;">
+                        @method('DELETE')
+                        @csrf
+                    </form>
+                    @else
+                    <button class="border-0 mr-2" data-toggle="tooltip" data-placement="bottom" title="Chưa lưu" style="background:transparent;" onclick="event.preventDefault();
+                document.getElementById('bookmark').submit();">
+                        <i class="h4 fas fa-star text-secondary"></i></button>
+                    <form id="bookmark" action="{{ route('employee.bookmark',"$jobs->id") }}" method="POST"
+                        style="display: none;">
+                        @csrf
+                    </form>
+                    @endif
+                </div>
                 <p class="h6 font-weight-bolder mt-4">Mô tả công việc</p>
                 <p class="h6 line-height">{!! nl2br($jobs->description) !!}</p>
                 <p class="h6 font-weight-bolder mt-4">Yêu cầu công việc</p>

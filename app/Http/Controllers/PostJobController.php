@@ -75,7 +75,8 @@ class PostJobController extends Controller
      */
     public function show($id)
     {
-        return view('employer/jobsManagement/detailJob');
+        dd(Auth::email());
+        // return view('employer/jobsManagement/detailJob');
     }
 
     /**

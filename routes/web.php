@@ -34,6 +34,10 @@ Route::group(['prefix' => 'find-job'], function () {
     Route::post('/{job_id}/{cv_id}', [EmploymentController::class, 'applyJob'])->name('employee.applyJob');
 
     Route::delete('/{job_id}/{user_id}', [EmploymentController::class, 'unApply'])->name('employee.unApply');
+
+    Route::post('/{job_id}', [EmploymentController::class, 'bookmarkJob'])->name('employee.bookmark');
+
+    Route::delete('/{job_id}/{user_id}', [EmploymentController::class, 'unbookmarkJob'])->name('employee.unbookmark');
 });
 
 

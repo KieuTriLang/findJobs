@@ -8,57 +8,82 @@ use Illuminate\Http\Request;
 
 class EmploymentController extends Controller
 {
-    public function index(){
-        $data= DB::table('post_jobs')
-                    ->join('employers','post_jobs.employer_id','=','employers.employer_id')
-                    ->select('post_jobs.*','employers.company_logo')
-                    ->orderByDesc('created_at')->paginate(20);
-        $quantityJob= DB::table('post_jobs')->count('id');
+    public function index()
+    {
+        $data = DB::table('post_jobs')
+            ->join('employers', 'post_jobs.employer_id', '=', 'employers.employer_id')
+            ->select('post_jobs.*', 'employers.company_logo')
+            ->orderByDesc('created_at')->paginate(20);
+        $quantityJob = DB::table('post_jobs')->count('id');
         // dd($data);
-        return view("employee/findjob",[
+        return view("employee/findjob", [
             'post_jobs' => $data,
-            'quantityJob'=>$quantityJob,
+            'quantityJob' => $quantityJob,
         ]);
     }
-    public function detailJob($id,$employer_id){
-        $jobs= DB::table('post_jobs')
-                    ->where('post_jobs.id', '=',$id)
-                    ->join('employers','post_jobs.employer_id','=','employers.employer_id')
-                    ->select('post_jobs.*','employers.company_logo')
-                    ->first();
+    public function detailJob($id, $employer_id)
+    {
+        $jobs = DB::table('post_jobs')
+            ->where('post_jobs.id', '=', $id)
+            ->join('employers', 'post_jobs.employer_id', '=', 'employers.employer_id')
+            ->select('post_jobs.*', 'employers.company_logo')
+            ->first();
         // dd($jobs);
-        $employerData= DB::table('employers')
-                    ->where("id",$employer_id)
-                    ->get();
-        $resume= DB::table('resumes')
-                    ->where('user_id','=',Auth::id())
-                    ->select('id','avatar_resume','cv_name')
-                    ->get();
-        $applied= DB::table('jobs_resumes')
-                    ->where('job_id','=',$id)
-                    ->where('user_id','=',Auth::id())
-                    ->get();
-        $user_id=Auth::id();
+        $employerData = DB::table('employers')
+            ->where("id", $employer_id)
+            ->get();
+        $resume = DB::table('resumes')
+            ->where('user_id', '=', Auth::id())
+            ->select('id', 'avatar_resume', 'cv_name')
+            ->get();
+        $applied = DB::table('jobs_resumes')
+            ->where('job_id', '=', $id)
+            ->where('user_id', '=', Auth::id())
+            ->get();
+        $bookmarked = DB::table('bookmark_post_jobs')
+            ->where('job_id', '=', $id)
+            ->where('user_id', '=', Auth::id())
+            ->get();
+        $user_id = Auth::id();
         // dd($resume);
-        return view('employee/detailJob',[
-            'jobs' =>$jobs,
-            'employers'=>$employerData[0],
-            'resumes'=>$resume,
-            'user_id'=>$user_id,
-            'applied'=>$applied,
+        return view('employee/detailJob', [
+            'jobs' => $jobs,
+            'employers' => $employerData[0],
+            'resumes' => $resume,
+            'user_id' => $user_id,
+            'applied' => $applied,
+            'bookmarked' => $bookmarked,
         ]);
     }
-    public function applyJob($job_id,$resume_id){
+    public function applyJob($job_id, $resume_id)
+    {
         DB::table('jobs_resumes')->insert([
-            'job_id'=>$job_id,
-            'user_id'=>Auth::id(),
-            'resume_id'=>$resume_id,
+            'job_id' => $job_id,
+            'user_id' => Auth::id(),
+            'resume_id' => $resume_id,
         ]);
-        return redirect()->back()->with('success','applied');
+        return redirect()->back()->with('success', 'applied');
     }
-    public function unApply($job_id,$user_id){
-        DB::table('jobs_resumes')->where('job_id','=',$job_id)->where('user_id','=',$user_id)->delete();
+    public function unApply($job_id, $user_id)
+    {
+        DB::table('jobs_resumes')->where('job_id', '=', $job_id)->where('user_id', '=', $user_id)->delete();
         session()->forget('success');
+        return redirect()->back();
+    }
+
+
+    public function bookmarkJob($job_id)
+    {
+        DB::table('bookmark_post_jobs')->insert([
+            'user_id' => Auth::id(),
+            'job_id' => $job_id,
+        ]);
+        return redirect()->back()->with('bookmark', 'bookmarked');
+    }
+    public function unbookmarkJob($job_id, $user_id)
+    {
+        DB::table('bookmark_post_jobs')->where('job_id', '=', $job_id)->where('user_id', '=', $user_id)->delete();
+        session()->forget('bookmark');
         return redirect()->back();
     }
 }
