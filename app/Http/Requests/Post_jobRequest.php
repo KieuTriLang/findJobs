@@ -26,7 +26,11 @@ class Post_jobRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'hire_position' => 'required|min:5|max:255',
+            'company_name' => 'required|min:5|max:255',
+            'description' => 'required|min:5|max:255',
+            'salary' => 'required|min:5|max:255',
+            'location' => 'required|min:5|max:255',
         ];
     }
 

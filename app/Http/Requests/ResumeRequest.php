@@ -26,7 +26,22 @@ class ResumeRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'avatar_resume' => 'required|min:5|max:255',
+            'post_code' => 'required|min:5|max:255',
+            'cv_name' => 'required|min:5|max:255',
+            'name' => 'required|min:5|max:255',
+            'career_name' => 'required|min:5|max:255',
+            'email' => 'required|min:5|max:255',
+            'phone_num' => 'required|min:5|max:255',
+            'birthday' => 'required|min:5|max:255',
+            'address' => 'required|min:5|max:255',
+            'career_target' => 'required|min:5|max:255',
+            'work_exp' => 'required|min:5|max:255',
+            'education' => 'required|min:5|max:255',
+            'activities' => 'required|min:5|max:255',
+            'awards' => 'required|min:5|max:255',
+            'reference' => 'required|min:5|max:255',
+            'certificate' => 'required|min:5|max:255',
         ];
     }
 

@@ -26,7 +26,16 @@ class EmployerRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+             'company_name' => 'required|min:5|max:255',
+             'company_size' => 'required|min:5|max:255',
+            'tax' => 'required|min:5|max:255',
+            'website' => 'required|min:5|max:255',
+            'company_summary' => 'required|min:5|max:255',
+            'company_logo' => 'required|min:5|max:255',
+            'contact_name' => 'required|min:5|max:255',
+            'position' => 'required|min:5|max:255',
+            'company_address' => 'required|min:5|max:255',
+            'company_phone' => 'required|min:5|max:255',
         ];
     }
 
