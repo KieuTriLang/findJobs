@@ -75,8 +75,18 @@ class PostJobController extends Controller
      */
     public function show($id)
     {
-        dd(Auth::email());
-        // return view('employer/jobsManagement/detailJob');
+        $jobs = DB::table('post_jobs')
+            ->where('post_jobs.id', '=', $id)
+            ->join('employers', 'post_jobs.employer_id', '=', 'employers.employer_id')
+            ->select('post_jobs.*', 'employers.company_logo','employers.company_name')
+            ->first();
+        // dd($jobs);
+        $resumes = PostJob::find($id)->resumes;
+        // dd($resumes);
+        return view('employer/jobsManagement/detailJob',[
+            'jobs' => $jobs,
+            'resumes' => $resumes,
+        ]);
     }
 
     /**

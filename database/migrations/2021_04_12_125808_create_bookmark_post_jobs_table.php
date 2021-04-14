@@ -14,14 +14,14 @@ class CreateBookmarkPostJobsTable extends Migration
     public function up()
     {
         Schema::create('bookmark_post_jobs', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('job_id');
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('post_job_id');
 
-            $table->foreign('user_id')
+            $table->foreign('employee_id')
                     ->references('employee_id')
                     ->on('employees')
                     ->onDelete('cascade');
-            $table->foreign('job_id')
+            $table->foreign('post_job_id')
                     ->references('id')
                     ->on('post_jobs')
                     ->onDelete('cascade');
