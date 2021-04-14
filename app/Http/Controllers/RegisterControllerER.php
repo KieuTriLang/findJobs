@@ -19,7 +19,7 @@ class RegisterControllerER extends Controller
         $companySizes= DB::table('company_sizes')->get();
         return view('employer/register',[
             'cities'=>$city,
-            'company_sizes'=>$companySizes,
+            'companySizes'=>$companySizes,
         ]);
     }
     public function store(Request $request)

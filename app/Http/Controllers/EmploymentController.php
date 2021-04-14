@@ -37,12 +37,12 @@ class EmploymentController extends Controller
             ->select('id', 'avatar_resume', 'cv_name')
             ->get();
         $applied = DB::table('jobs_resumes')
-            ->where('job_id', '=', $id)
+            ->where('post_job_id', '=', $id)
             ->where('user_id', '=', Auth::id())
             ->get();
         $bookmarked = DB::table('bookmark_post_jobs')
-            ->where('job_id', '=', $id)
-            ->where('user_id', '=', Auth::id())
+            ->where('post_job_id', '=', $id)
+            ->where('employee_id', '=', Auth::id())
             ->get();
         $user_id = Auth::id();
         // dd($resume);
@@ -58,7 +58,7 @@ class EmploymentController extends Controller
     public function applyJob($job_id, $resume_id)
     {
         DB::table('jobs_resumes')->insert([
-            'job_id' => $job_id,
+            'post_job_id' => $job_id,
             'user_id' => Auth::id(),
             'resume_id' => $resume_id,
         ]);
@@ -66,23 +66,23 @@ class EmploymentController extends Controller
     }
     public function unApply($job_id, $user_id)
     {
-        DB::table('jobs_resumes')->where('job_id', '=', $job_id)->where('user_id', '=', $user_id)->delete();
+        DB::table('jobs_resumes')->where('post_job_id', '=', $job_id)->where('user_id', '=', $user_id)->delete();
         session()->forget('success');
         return redirect()->back();
     }
 
 
-    public function bookmarkJob($job_id)
+    public function bookmark($job_id)
     {
         DB::table('bookmark_post_jobs')->insert([
-            'user_id' => Auth::id(),
-            'job_id' => $job_id,
+            'employee_id' => Auth::id(),
+            'post_job_id' => $job_id,
         ]);
         return redirect()->back()->with('bookmark', 'bookmarked');
     }
-    public function unbookmarkJob($job_id, $user_id)
+    public function unbookmark($job_id, $user_id)
     {
-        DB::table('bookmark_post_jobs')->where('job_id', '=', $job_id)->where('user_id', '=', $user_id)->delete();
+        DB::table('bookmark_post_jobs')->where('post_job_id', '=', $job_id)->where('employee_id', '=', $user_id)->delete();
         session()->forget('bookmark');
         return redirect()->back();
     }

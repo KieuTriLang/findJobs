@@ -77,8 +77,8 @@
                     <div class="col-md-6">
                         <label for="company-size">Company Size</label>
                         <select name="company_size" id="company-size" class="form-control">
-                            @foreach ($companySizes as $companySizes)
-                                <option value="{{ $companySize->id }}">{{ $companySizes->size }}</option>
+                            @foreach ($companySizes as $companySize)
+                                <option value="{{ $companySize->id }}">{{ $companySize->size }}</option>
                             @endforeach
                         </select>
                     </div>

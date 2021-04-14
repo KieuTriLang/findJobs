@@ -29,15 +29,17 @@ Route::get('/', [HomeController::Class, 'employeeHome'])->name('employee.home');
 Route::group(['prefix' => 'find-job'], function () {
     Route::get('/', [EmploymentController::class, 'index'])->name('employee.findjob');
 
+    Route::get('/bookmark',[HomeController::class, 'bookMarkView'])->name('bookMarkView');
+
     Route::get('/{post_id}/{employer_id}', [EmploymentController::class, 'detailJob'])->name('employee.detailJob')->middleware('auth');
 
     Route::post('/{job_id}/{cv_id}', [EmploymentController::class, 'applyJob'])->name('employee.applyJob');
 
-    Route::delete('/{job_id}/{user_id}', [EmploymentController::class, 'unApply'])->name('employee.unApply');
+    Route::delete('/{jobs_id}/{user_id}', [EmploymentController::class, 'unApply'])->name('employee.unApply');
 
-    Route::post('/{job_id}', [EmploymentController::class, 'bookmarkJob'])->name('employee.bookmark');
+    Route::post('/{jobs_id}', [EmploymentController::class, 'bookmark'])->name('employee.bookmark');
 
-    Route::delete('/{job_id}/{user_id}', [EmploymentController::class, 'unbookmarkJob'])->name('employee.unbookmark');
+    Route::delete('bm/{jobs_id}/{users_id}', [EmploymentController::class, 'unbookmark'])->name('employee.unbookmark');
 });
 
 

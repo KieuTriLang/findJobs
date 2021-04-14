@@ -80,10 +80,8 @@
     <div class="d-flex row">
         <div class="col-12 col-md-8 p-0">
             <div class="pt-4 ml-4">
-                <p class="h3 font-weight-bolder">Chuyên Viên Quan Hệ Khách Hàng ( Thu Nhập Cố Định 15 TR + Thưởng Lên
-                    Tới 30
-                    TR)</p>
-                <p class="h6"><i class="fas fa-dollar-sign mr-2"></i>Mức lương 15 - 25 triệu VNĐ</p>
+                <p class="h3 font-weight-bolder">{{ $jobs->hire_position }}</p>
+                <p class="h6"><i class="fas fa-dollar-sign mr-2"></i>{{ $jobs->salary }}</p>
                 <div class="d-flex justify-content-between">
                     @if (Session::has('success') || count($applied) > 0)
                     <button class="btn btn-outline-danger" onclick="event.preventDefault();
@@ -96,7 +94,7 @@
                         @csrf
                     </form>
                     @else
-                    <button onclick="togglePopup()" class="btn btn-outline-primary"><i
+                    <button onclick="togglePopup('popup-1')" class="btn btn-outline-primary"><i
                             class="fas fa-paper-plane mr-2"></i>Ứng tuyển ngay</button>
                     @endif
 
@@ -142,7 +140,7 @@
         <div class="popup" id="popup-1">
             <div class="overlay"></div>
             <div class="content">
-                <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <div class="close-btn" onclick="togglePopup('popup-1');">&times;</div>
                 <h3>Chọn CV</h3>
                 <div class="d-flex flex-column mt-2 col-11 mx-auto list-resume">
                     @if (count($resumes)==0)

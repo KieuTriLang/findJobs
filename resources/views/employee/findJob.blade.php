@@ -127,8 +127,8 @@
                                     <a href="{{ route('employee.detailJob',["$job->id","$job->employer_id"]) }}" class="text-danger"><h5 class="mb-1 text-hiden mt-3">{{ $job->hire_position }}</h5></a>
                                     <a href="#" class="h6 d-block text-secondary mb-1">{{ $job->company_name }}</a>
                                     <span class="font-size"><i class="fas fa-dollar-sign mr-1"></i>{{ $job->salary }}&ensp;</span>
-                                    <span class="font-size"><i class="fas fa-map-marker-alt mr-1"></i>{{ $job->location }}&ensp;</span><br>
-                                    <span class="font-size"><i class="far fa-clock mr-1"></i>{{ $job->created_at }}</span>&ensp;
+                                    <span class="font-size"><i class="fas fa-map-marker-alt mr-1"></i>{{ $job->location }}&ensp;</span>
+                                    <span class="font-size"><i class="far fa-clock mr-1"></i>{{ date('d-m-Y',strtotime($job->created_at)) }}</span>&ensp;
                                     <div class="tg-themetag tg-featuretag platinum">Hot</div>
                                 </div>
                             </div>

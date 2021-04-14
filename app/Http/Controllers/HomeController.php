@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -22,5 +23,16 @@ class HomeController extends Controller
     }
     public function employerHome(){
         return view('employer/home');
+    }
+    public function bookMarkView(){
+        $jobs= DB::table('bookmark_post_jobs')
+                    ->where('bookmark_post_jobs.employee_id','=',Auth::id())
+                    ->join('post_jobs','post_jobs.id','bookmark_post_jobs.post_job_id')
+                    ->join('employers','employers.employer_id','post_jobs.employer_id')
+                    ->get();
+                    // dd($jobs);
+        return view('employee/showBookMarkJob',[
+            'jobs' => $jobs,
+        ]);
     }
 }

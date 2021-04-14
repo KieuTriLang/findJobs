@@ -14,11 +14,11 @@ class CreateJobsResumesTable extends Migration
     public function up()
     {
         Schema::create('jobs_resumes', function (Blueprint $table) {
-            $table->unsignedBigInteger('job_id');
+            $table->unsignedBigInteger('post_job_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('resume_id');
             $table->timestamps();
-            $table->foreign('job_id')->references('id')->on('post_jobs')->onDelete('cascade');
+            $table->foreign('post_job_id')->references('id')->on('post_jobs')->onDelete('cascade');
             $table->foreign('resume_id')->references('id')->on('resumes')->onDelete('cascade');
         });
     }

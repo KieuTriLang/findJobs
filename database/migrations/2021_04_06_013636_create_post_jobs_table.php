@@ -26,8 +26,7 @@ class CreatePostJobsTable extends Migration
             $table->longText('benefit');
             $table->string('salary');
             $table->string('location');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->timestamps();
 
             $table->foreign('employer_id')
                     ->references('id')
