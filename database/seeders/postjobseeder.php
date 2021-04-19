@@ -17,7 +17,8 @@ class postjobseeder extends Seeder
         for($i=0; $i <50;$i++) {
             DB::table('post_jobs')->insert([
                 "employer_id"=>DB::table('users')->where('email','tienphongbank@gmail.com')->first()->id,
-                "hire_position" => "$i.Trưởng Nhóm Khách Hàng Cá Nhân – Khối Bán Trực Tiếp",
+                "hire_industry"=>DB::table("industries")->inRandomOrder()->limit(1)->get()[0]->industry_name,
+                "hire_position" => "$i.".DB::table("hire_positions")->inRandomOrder()->limit(1)->get()[0]->hire_position. " Khách Hàng Cá Nhân – Khối Bán Trực Tiếp",
                 "company_name" => "NGÂN HÀNG TMCP TIÊN PHONG TPBANK",
                 "description" => "- Xây dựng và triển khai thực hiện chỉ tiêu kinh doanh được giao cho Nhóm và của cá nhân
             - Quản lý, tư vấn, đào tạo và giám sát đội ngũ Chuyên viên, Nhân viên, Cộng tác viên thuộc phạm vi quản lý trong việc bán các sản phẩm Ngân hàng cá nhân gồm: sản phẩm cho vay, thẻ tín dụng, tài khoản trả lương, tài khoản thanh toán cá nhân
@@ -33,7 +34,7 @@ class postjobseeder extends Seeder
                 "benefit" => "- Môi trường làm việc chuyên nghiệp
             - Cơ hội thăng tiến lên vị trí Chuyên viên cao cấp hoặc Trưởng nhóm nếu hoàn thành chỉ tiêu kinh doanh được giao và đạt lương kinh doanh liên tiếp trong vòng 6 tháng.",
                 "salary" => "12-15 triệu",
-                "location" => "Hà Nội",
+                "location" => DB::table("cities")->inRandomOrder()->limit(1)->get()[0]->city_name,
                 "created_at" =>date('Y-m-d H:i:s'),
                 "updated_at" =>date('Y-m-d H:i:s'),
             ]);

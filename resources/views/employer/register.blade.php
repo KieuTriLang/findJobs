@@ -78,7 +78,7 @@
                         <label for="company-size">Company Size</label>
                         <select name="company_size" id="company-size" class="form-control">
                             @foreach ($companySizes as $companySize)
-                                <option value="{{ $companySize->id }}">{{ $companySize->size }}</option>
+                                <option value="{{ $companySize->size }}">{{ $companySize->size }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -171,7 +171,7 @@
                         <select name="location" id="location" class="form-control">
                             <option value="">--Distric,City--</option>
                             @foreach ($cities as $city)
-                            <option value="{{ $city->city_code }}">{{ $city->city_name }}</option>
+                            <option value="{{ $city->city_name }}">{{ $city->city_name }}</option>
                             @endforeach
                         </select>
                     </div>

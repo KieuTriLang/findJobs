@@ -52,7 +52,7 @@
                             <p class="mt-3"><span class="font-weight-bold">Quy mô công ty:</span></p>
                             <select name="company_size" id="company-size" class="form-control">
                                 @foreach ($companySizes as $companySize)
-                                    <option value="{{ $companySize->id }}" {{ ($info->company_size==$companySize->id)?'selected':'' }}>{{ $companySize->size }}</option>
+                                    <option value="{{ $companySize->size }}" {{ ($info->company_size==$companySize->size)?'selected':'' }}>{{ $companySize->size }}</option>
                                 @endforeach
                             </select>
 
@@ -71,7 +71,7 @@
                             <p class="mt-3"><span class="font-weight-bold">Thành phố:</span></p>
                             <select name="location" id="" class="form-control">
                                 @foreach ($cities as $city)
-                                    <option value="{{ $city->city_code }}" {{ ($info->location==$city->city_code)?'selected':'' }}>{{ $city->city_name }}</option>
+                                    <option value="{{ $city->city_name }}" {{ ($info->location==$city->city_name)?'selected':'' }}>{{ $city->city_name }}</option>
                                 @endforeach
                             </select>
 

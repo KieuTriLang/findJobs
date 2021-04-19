@@ -9,6 +9,20 @@
         <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
             <div class="col-9 d-flex flex-column">
                 <div class="col-12 mt-3">
+                    <input list="industry" name="industries" id="industries" class="col-10 text-light border-0 h5 pt-2 @error ('hire_position') is-invalid @enderror" style="background-color:transparent;" placeholder="Ngành nghề tuyển dụng">
+
+                    <datalist id="industry">
+                        @foreach ($industries as $industry)
+                            <option value="{{ $industry->industry_name }}"></option>
+                        @endforeach
+                    </datalist>
+                    @error('hire_industry')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="col-12 mt-3">
                     <i class="h4 fas fa-user"></i>
                     <input type="text" name="hire_position" id="hire_position"
                         class="col-10 text-light border-0 h5 pt-2 @error ('hire_position') is-invalid @enderror"
