@@ -88,9 +88,7 @@ Route::group(['prefix' => 'employer'], function () {
         return view('employer/findResume');
     })->name('employer.findResume');
 
-    Route::get('FAQ', function () {
-        return view('employer/FAQ');
-    })->name('employer.faq');
+    Route::get('faq',[questionController::class,'employerFaq'])->name('employer.faq');
 
     Route::resource('job', PostJobController::class)->middleware('employerAuth');
 

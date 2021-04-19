@@ -1,7 +1,7 @@
 @php
     $question =\App\Models\question::all();
 @endphp
-@extends('layouts.employee')
+@extends('layouts.employer')
 <head>
     <title>FindJobs - Employer - Câu hỏi thường gặp</title>
 </head>

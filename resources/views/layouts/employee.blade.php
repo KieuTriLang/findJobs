@@ -34,24 +34,24 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold active" href="{{ url('/') }}">HOME</a>
+                        <a class="nav-link font-weight-bold {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">HOME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="{{ route('employee.findjob') }}">FIND JOBS</a>
+                        <a class="nav-link font-weight-bold {{ preg_match('/find-job/',Request::url()) ? 'active' : '' }}" href="{{ route('employee.findjob') }}">FIND JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="{{ route('resume.create') }}">CREATE RESUME</a>
+                        <a class="nav-link font-weight-bold {{ preg_match('/resume\/create/',Request::url()) ? 'active' : '' }}" href="{{ route('resume.create') }}">CREATE RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="{{ route('employee.faq') }}">FAQ</a>
+                        <a class="nav-link font-weight-bold {{ preg_match('/faq/',Request::url()) ? 'active' : '' }}" href="{{ route('employee.faq') }}">FAQ</a>
                     </li>
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="{{ route('employee.viewLogIn') }}">Sign In</a>
+                        <a class="nav-link font-weight-bold {{ preg_match('/sign-in/',Request::url()) ? 'active' : '' }}" href="{{ route('employee.viewLogIn') }}">Sign In</a>
                     </li>
                     @if (Route::has('employee.register'))
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="{{ route('employee.register') }}">Sign Up</a>
+                        <a class="nav-link font-weight-bold {{ preg_match('/sign-up/',Request::url()) ? 'active' : '' }}" href="{{ route('employee.register') }}">Sign Up</a>
                     </li>
                     @endif
                     @else
