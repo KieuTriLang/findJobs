@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Softskill extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
     protected $table='softskills';
 }

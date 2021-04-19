@@ -27,8 +27,8 @@ class WeeklyUsersChartController extends ChartController
         $this->chart->load(backpack_url('charts/weekly-users'));
 
         // OPTIONAL
-        // $this->chart->minimalist(false);
-        // $this->chart->displayLegend(true);
+         $this->chart->minimalist(false);
+         $this->chart->displayLegend(true);
     }
 
     /**
@@ -36,16 +36,16 @@ class WeeklyUsersChartController extends ChartController
      *
      * @return json
      */
-    // public function data()
-    // {
-    //     $users_created_today = \App\User::whereDate('created_at', today())->count();
+     public function data()
+     {
+         $users_created_today = \App\User::whereDate('created_at', today())->count();
 
-    //     $this->chart->dataset('Users Created', 'bar', [
-    //                 $users_created_today,
-    //             ])
-    //         ->color('rgba(205, 32, 31, 1)')
-    //         ->backgroundColor('rgba(205, 32, 31, 0.4)');
-    // }
+         $this->chart->dataset('Users Created', 'bar', [
+                     $users_created_today,
+                 ])
+             ->color('rgba(205, 32, 31, 1)')
+             ->backgroundColor('rgba(205, 32, 31, 0.4)');
+     }
 }
 
 Widget::add([
@@ -54,10 +54,10 @@ Widget::add([
 
     // OPTIONALS
 
-    // 'class'   => 'card mb-2',
-    // 'wrapper' => ['class'=> 'col-md-6'] ,
-    // 'content' => [
-    // 'header' => 'New Users',
-    // 'body'   => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>',
-    // ],
+     'class'   => 'card mb-2',
+     'wrapper' => ['class'=> 'col-md-6'] ,
+     'content' => [
+     'header' => 'New Users',
+     'body'   => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>',
+     ],
 ]);
