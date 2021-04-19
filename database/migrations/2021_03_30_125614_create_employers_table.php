@@ -26,12 +26,13 @@ class CreateEmployersTable extends Migration
             $table->string('position');
             $table->string('company_address');
             $table->string('company_phone');
+            $table->string('location');
             $table->timestamps();
 
             $table->foreign('employer_id')
-                    ->references('id')
-                    ->on('users')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

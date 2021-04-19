@@ -53,23 +53,21 @@
 </div>
 <div class=" container-fluid mt-5">
     <div class="container mx-auto row">
-        @for ($i = 0; $i < 12; $i++)
+        @foreach ($postJobs as $postJob)
         <div class="col-sm-6 col-md-3 mb-4">
             <div class="card card-add">
                 <img class="card-img-top img-fluid"
-                    src="https://images.unsplash.com/photo-1616399798569-dc2779dd0373?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1fHRvd0paRnNrcEdnfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
+                    src="{{ asset("company_logo/$postJob->company_logo") }}"
                     alt="Card image">
                 <div class="card-body">
-                    <p class="card-title"><a href="#" class="text-dark font-weight-bold">CHUYÊN VIÊN DIGITAL
-                            MARKETING</a></p>
-                    <p class="card-text"><a href="#" class="text-dark">Công ty Cổ phần DKRA Việt Nam</a></p>
-                    <p class="card-text text-truncate">Note how text-capitalize only changes the first letter of each
-                        word, leaving the case of any other letters unaffected.</p>
-                    <a href="#" class="float-right">See more ></a>
+                    <p class="card-title"><a href="{{ route('employee.detailJob',["$postJob->id","$postJob->employer_id"]) }}" class="text-dark font-weight-bold">{{ $postJob->hire_position }}</a></p>
+                    <p class="card-text h6"><a href="#" class="text-dark h6">{{ $postJob->company_name }}</a></p>
+                    <p class="card-text text-truncate">{{ $postJob->description }}</p>
+                    <a href="{{ route('employee.detailJob',["$postJob->id","$postJob->employer_id"]) }}" class="float-right">See more ></a>
                 </div>
             </div>
         </div>
-    @endfor
+        @endforeach
 </div>
 <div class="d-flex justify-content-center">
     <a href="{{ route('employee.findjob') }}" class="btn btn-primary mt-5">See More</a>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBasicformsTable extends Migration
+class CreateHirePositionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateBasicformsTable extends Migration
      */
     public function up()
     {
-        Schema::create('basicforms', function (Blueprint $table) {
+        Schema::create('hire_positions', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('content_form');
+            $table->string("hire_position");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateBasicformsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('basicforms');
+        Schema::dropIfExists('hire_positions');
     }
 }

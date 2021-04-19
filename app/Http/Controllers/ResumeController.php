@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\User;
 use App\Models\Resume;
+use Image;
+use Storage;
 
 class ResumeController extends Controller
 {
@@ -17,7 +20,8 @@ class ResumeController extends Controller
      */
     public function index()
     {
-        $resumes = DB::table('resumes')->where('user_id', Auth::id())->select('id', 'cv_name')->orderByDesc('created_at')->get();
+        // $resumes = DB::table('resumes')->where('user_id', Auth::id())->select('id', 'cv_name')->orderByDesc('created_at')->get();
+        $resumes= User::find(Auth::id())->resumes->sortByDesc('created_at');
         $count =  DB::table('resumes')->where('user_id', Auth::id())->count();
         return view('employee/resumeManagement/showResume', [
             'count' => $count,
@@ -57,7 +61,9 @@ class ResumeController extends Controller
         ]);
         $avatar_resume = $request->file('avatar_resume')->getClientOriginalName();
         $avatar_resume=Str::random(30).$avatar_resume;
-        $request->file('avatar_resume')->move(public_path('avatar_resume'),$avatar_resume);
+        $resizeImage= Image::make($request->file('avatar_resume')->getRealPath());
+        $resizeImage->fit(100)->save('avatar_resume/thumbnail'.$avatar_resume,100);
+        $resizeImage->fit(300)->save('avatar_resume/medium'.$avatar_resume,100);
 
         $resume = new Resume;
         $resume->user_id = Auth::id();
@@ -163,6 +169,10 @@ class ResumeController extends Controller
      */
     public function destroy($id)
     {
+        $avatar_resume=DB::table('resumes')->where('id', '=', $id)->select('avatar_resume')->first();
+        // dd($avatar_resume);
+        // Storage::delete("avatar_resume/thumbnail$avatar_resume->avatar_resume");
+        // Storage::delete("avatar_resume/medium$avatar_resume->avatar_resume");
         DB::table('resumes')->where('id', '=', $id)->delete();
         return redirect('/resume');
     }

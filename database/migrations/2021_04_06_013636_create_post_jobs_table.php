@@ -17,7 +17,7 @@ class CreatePostJobsTable extends Migration
         Schema::create('post_jobs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employer_id');
-
+            $table->string('hire_industry');
             $table->string('hire_position');
             $table->string('company_name');
             $table->longText('description');
@@ -27,12 +27,11 @@ class CreatePostJobsTable extends Migration
             $table->longText('benefit');
             $table->string('salary');
             $table->string('location');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->timestamps();
 
             $table->foreign('employer_id')
-                    ->references('id')
-                    ->on('users');
+                ->references('id')
+                ->on('users');
         });
     }
 

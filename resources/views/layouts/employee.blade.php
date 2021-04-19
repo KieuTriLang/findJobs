@@ -40,7 +40,7 @@
                         <a class="nav-link font-weight-bold" href="{{ route('employee.findjob') }}">FIND JOBS</a>
                     </li>
                     <li class="nav-item mr-md-2">
-                        <a class="nav-link font-weight-bold" href="#">CREATE RESUME</a>
+                        <a class="nav-link font-weight-bold" href="{{ route('resume.create') }}">CREATE RESUME</a>
                     </li>
                     <li class="nav-item mr-md-2">
                         <a class="nav-link font-weight-bold" href="{{ route('employee.faq') }}">FAQ</a>
@@ -62,7 +62,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="#" class="dropdown-item">
+                            <a href="{{ route('employee.profile') }}" class="dropdown-item">
                                 <i class="fas fa-user-circle mr-2"></i>
                                 Account Infomation
                             </a>

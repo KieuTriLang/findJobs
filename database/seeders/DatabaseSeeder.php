@@ -17,9 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             hardskillseeder::class,
             softskillseeder::class,
+            hirePositionSeeder::class,
             Languageseeder::class,
             hobbyseeder::class,
             Cityseeder::class,
+            industriesseeder::class,
+            companysizeseeder::class,
             userseeder::class,
             employerseeder::class,
             postjobseeder::class,
