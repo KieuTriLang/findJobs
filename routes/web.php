@@ -28,10 +28,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 Route::get('/', [HomeController::Class, 'employeeHome'])->name('employee.home');
 
-//Route::get('faq',[questionController::class,'employeeFaq'])->name('employee.faq');
-Route::get('FAQ', function () {
-    return view('employee/FAQ');
-  
+Route::get('faq',[questionController::class,'employeeFaq'])->name('employee.faq');
 Route::group(['prefix' => 'find-job'], function () {
     Route::get('/', [EmploymentController::class, 'index'])->name('employee.findjob');
 
