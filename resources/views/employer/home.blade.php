@@ -2,6 +2,13 @@
 <head>
     <title>FindJobs - Employer - Trang chủ</title>
 </head>
+@section('additional-Style')
+    <style>
+        .fix-size-carousel{
+            object-fit: cover;
+        }
+    </style>
+@endsection
 @section('content')
 <div id="carousel" class="carousel slide" data-ride="carousel">
 
@@ -16,18 +23,18 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <a href="">
-                <img src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-large_ed_25_03.png" alt="Los Angeles"
+                <img class="fix-size-carousel" src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-large_ed_25_03.png" alt="Los Angeles"
                     height="520px" width="100%" height="100%">
             </a>
         </div>
         <div class="carousel-item">
-            <a href=""><img src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-large_ed_25_03.png"
+            <a href=""><img class="fix-size-carousel" src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-large_ed_25_03.png"
                     alt="Chicago" height="520px" width="100%" height="100%">
             </a>
         </div>
         <div class="carousel-item">
             <a href="">
-                <img src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-large_ed_25_03.png" alt="New York"
+                <img class="fix-size-carousel" src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-large_ed_25_03.png" alt="New York"
                     height="520px" width="100%" height="100%">
             </a>
         </div>

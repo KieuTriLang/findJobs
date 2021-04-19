@@ -2,6 +2,13 @@
 <head>
     <title>FindJobs - Trang chủ</title>
 </head>
+@section('additional-Style')
+    <style>
+        .fix-size-carousel{
+            object-fit: cover;
+        }
+    </style>
+@endsection
 @section('content')
 <div id="carousel" class="carousel slide" data-ride="carousel">
 
@@ -15,15 +22,15 @@
     <!-- The slideshow -->
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-602f899eb555f_large_banner_new.png"
+            <img class="fix-size-carousel" src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-602f899eb555f_large_banner_new.png"
                 alt="Los Angeles" height="500px" width="100%" height="100%">
         </div>
         <div class="carousel-item">
-            <img src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-1900x747x0_banner_large_new.jpg"
+            <img class="fix-size-carousel" src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-1900x747x0_banner_large_new.jpg"
                 alt="Chicago" height="500px" width="100%" height="100%">
         </div>
         <div class="carousel-item">
-            <img src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-banner_final.jpg"
+            <img class="fix-size-carousel" src="https://www.findjobs.vn/htdocs/thumbs/banners/1900x747x0-banner_final.jpg"
                 alt="New York" height="500px" width="100%" height="100%">
         </div>
         <div class="carousel-caption mb-5">
