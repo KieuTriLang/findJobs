@@ -3,10 +3,11 @@
 @endphp
 @extends('layouts.employee')
 <head>
-    <title>FindJobs - Câu hỏi thường gặp</title>
+    <title>FindJobs - Employer - Câu hỏi thường gặp</title>
 </head>
-@section('additionall-Style')
+@section('additional-Style')
     <link href="{{ asset("css/faq.css")}}" rel="stylesheet" type="text/css">
+
 @endsection
 @section('content')
     <div class="container pl-0">

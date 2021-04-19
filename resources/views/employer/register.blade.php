@@ -1,5 +1,7 @@
 @extends('layouts.employer')
-
+<head>
+    <title>FindJobs - Employer - Đăng ký</title>
+</head>
 @section('content')
 <div class="container">
     <div class="row">
