@@ -38,12 +38,12 @@
             <div class="d-flex flex-column mt-3">
                 <p class="h4 font-weight-bold text-primary mt-5 mb-3">Thông tin nhà tuyển dụng</p>
                 <p><span class="font-weight-bold">Tên công ty:</span> {{ $info->company_name }}</p>
-                <p><span class="font-weight-bold">Quy mô công ty:</span> {{ $info->size }} thành viên</p>
+                <p><span class="font-weight-bold">Quy mô công ty:</span> {{ $info->company_size }} thành viên</p>
                 <p><span class="font-weight-bold">Tax:</span> {{ $info->tax }}</p>
                 <p><span class="font-weight-bold">Website:</span> {{ $info->website }}</p>
                 <p><span class="font-weight-bold">Giới thiệu công ty:</span><br> {!! nl2br($info->company_summary) !!}</p>
                 <p><span class="font-weight-bold">Địa chỉ công ty:</span> {{ $info->company_address }}</p>
-                <p><span class="font-weight-bold">Thành Phố:</span> {{ $info->city_name }}</p>
+                <p><span class="font-weight-bold">Thành Phố:</span> {{ $info->location }}</p>
                 <p class="h4 font-weight-bold text-primary mt-5 mb-3">Thông tin người liên hệ</p>
                 <p><span class="font-weight-bold">Tên người liên hệ:</span> {{ $info->contact_name }}</p>
                 <p><span class="font-weight-bold">Vị trí:</span> {{ $info->position }}</p>

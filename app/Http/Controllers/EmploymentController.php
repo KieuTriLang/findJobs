@@ -14,11 +14,15 @@ class EmploymentController extends Controller
             ->join('employers', 'post_jobs.employer_id', '=', 'employers.employer_id')
             ->select('post_jobs.*', 'employers.company_logo')
             ->orderByDesc('created_at')->paginate(20);
-        $quantityJob = DB::table('post_jobs')->count('id');
+        $cities = DB::table('cities')->get();
+        $industries = DB::table('industries')->get();
+        $hirePositions = DB::table('hire_positions')->get();
         // dd($data);
         return view("employee/findjob", [
             'post_jobs' => $data,
-            'quantityJob' => $quantityJob,
+            'cities' => $cities,
+            'industries' => $industries,
+            'hirePositions' => $hirePositions,
         ]);
     }
     public function detailJob($id, $employer_id)
@@ -87,3 +91,4 @@ class EmploymentController extends Controller
         return redirect()->back();
     }
 }
+// /(?<=nn-)[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ-]*((?=\+vt))/g

@@ -73,9 +73,6 @@ class ProfileController extends Controller
     {
         $info = DB::table('employers')
                     ->where('employers.employer_id', '=', Auth::id())
-                    ->join('cities','employers.location','cities.city_code')
-                    ->join('company_sizes','employers.company_size','company_sizes.id')
-                    ->select('employers.*','cities.city_name','company_sizes.size')
                     ->get();
         // dd($info);
         $countPJob =  DB::table('post_jobs')->where('employer_id', Auth::id())->count();

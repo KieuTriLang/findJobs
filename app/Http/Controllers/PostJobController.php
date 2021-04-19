@@ -37,9 +37,11 @@ class PostJobController extends Controller
     {
         $hardskills = DB::table('hardskills')->get();
         $softskills = DB::table('softskills')->get();
+        $industries = DB::table('industries')->get();
         return view('employer/jobsManagement/createJob',[
             'hardskills' => $hardskills,
             'softskills' => $softskills,
+            'industries' => $industries,
         ]);
     }
 
@@ -53,6 +55,7 @@ class PostJobController extends Controller
     {
         $postJob = new PostJob;
         $postJob->employer_id = Auth::id();
+        $postJob->hire_industry= $request->hire_industry;
         $postJob->hire_position = $request->hire_position;
         $postJob->company_name = $request->company_name;
         $postJob->description = $request->description;
@@ -100,10 +103,12 @@ class PostJobController extends Controller
         $hardskills = DB::table('hardskills')->get();
         $softskills = DB::table('softskills')->get();
         $postJobs = DB::table('post_jobs')->where('id', "=", $id)->first();
+        $industries = DB::table('industries')->get();
         return view('employer/jobsManagement/editJob', [
             'postJobs' => $postJobs,
             'hardskills' => $hardskills,
             'softskills' => $softskills,
+            'industries' => $industries,
         ]);
     }
 
@@ -119,6 +124,7 @@ class PostJobController extends Controller
         DB::table('post_jobs')
             ->where('id', '=', $id)
             ->update([
+                "hire_industry" => $request->hire_industry,
                 "hire_position" => $request->hire_position,
                 "company_name" => $request->company_name,
                 "description" => $request->description,

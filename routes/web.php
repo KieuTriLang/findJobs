@@ -9,6 +9,7 @@ use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\PostJobController;
 use App\Http\Controllers\EmploymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\filterController;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 /*
@@ -28,6 +29,8 @@ Route::get('/', [HomeController::Class, 'employeeHome'])->name('employee.home');
 
 Route::group(['prefix' => 'find-job'], function () {
     Route::get('/', [EmploymentController::class, 'index'])->name('employee.findjob');
+
+    Route::get('/{string}',[filterController::class,'search'])->name("searchJob");
 
     Route::get('/bookmark',[HomeController::class, 'bookMarkView'])->name('bookMarkView');
 
@@ -87,7 +90,7 @@ Route::group(['prefix' => 'employer'], function () {
         return view('employer/FAQ');
     })->name('employer.faq');
 
-    Route::resource('job', PostJobController::class)->middleware('auth');
+    Route::resource('job', PostJobController::class)->middleware('employerAuth');
 
     Route::prefix('profile')->middleware('auth')->group(function(){
         Route::get('/',[ProfileController::class, 'profileER'])->name('employer.profile');

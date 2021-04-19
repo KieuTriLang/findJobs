@@ -10,10 +10,28 @@
         <div class="d-flex row col-11 mx-auto align-items-center shadow bg-dark text-light mt-4 p-0">
             <div class="col-9 d-flex flex-column">
                 <div class="col-12 mt-3">
+                    <input list="industry" name="industries" id="industries"
+                        class="col-10 text-light border-0 h5 pt-2 @error ('hire_position') is-invalid @enderror"
+                        style="background-color:transparent;" placeholder="Ngành nghề tuyển dụng"
+                        value="{{ $postJobs->hire_industry }}">
+
+                    <datalist id="industry">
+                        @foreach ($industries as $industry)
+                        <option value="{{ $industry->industry_name }}"></option>
+                        @endforeach
+                    </datalist>
+                    @error('hire_industry')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="col-12 mt-3">
                     <i class="h4 fas fa-user"></i>
                     <input type="text" name="hire_position" id="hire_position"
                         class="col-10 text-light border-0 h5 pt-2 @error ('hire_position') is-invalid @enderror"
-                        style="background-color:transparent;" placeholder="Vị trí tuyển dụng" value="{{ $postJobs->hire_position }}">
+                        style="background-color:transparent;" placeholder="Vị trí tuyển dụng"
+                        value="{{ $postJobs->hire_position }}">
                     @error('hire_position')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -24,7 +42,8 @@
                     <i class="h4 fas fa-building"></i>
                     <input type="text" name="company_name" id="company_name"
                         class="col-10 text-light border-0 h5 pt-2 @error ('company_name') is-invalid @enderror"
-                        style="background-color:transparent;" placeholder="Tên công ty/ chi nhánh cần tuyển dụng" value="{{ $postJobs->company_name }}">
+                        style="background-color:transparent;" placeholder="Tên công ty/ chi nhánh cần tuyển dụng"
+                        value="{{ $postJobs->company_name }}">
                     @error('company_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -54,7 +73,8 @@
                             năng</label>
                         <hr class=" bg-dark">
                         <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
-                            name="hardskills" id="hardSkill" class="col-12 border-0">{{ $postJobs->hardskills }}</textarea>
+                            name="hardskills" id="hardSkill"
+                            class="col-12 border-0">{{ $postJobs->hardskills }}</textarea>
                         <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <i class="fas fa-plus"></i>
@@ -71,7 +91,8 @@
                             năng mềm</label>
                         <hr class=" bg-dark">
                         <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
-                            name="softskills" id="softSkill" class="col-12 border-0">{{ $postJobs->softskills }}</textarea>
+                            name="softskills" id="softSkill"
+                            class="col-12 border-0">{{ $postJobs->softskills }}</textarea>
                         <div class="col-12 p-0 border text-center " data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <i class="fas fa-plus"></i>
@@ -118,17 +139,18 @@
                         @enderror
                     </div>
                     <div class="col-12">
-                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Quyền lợi được hưởng</label>
+                        <label for="" class="h4 font-weight-bolder pt-5 m-0"><i class="fas fa-edit mr-2"></i>Quyền lợi
+                            được hưởng</label>
                         <hr class=" bg-dark">
                         <textarea oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
                             name="benefit" id="" class="col-12 border-0 @error ('benefit') is-invalid @enderror"
                             placeholder="Quyền lợi mà được hưởng khi ứng tuyển vào công ty ...">{{ $postJobs->benefit }}</textarea>
                     </div>
                     @error('benefit')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-end bg-light p-5">
