@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resume extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
     protected $table='resumes';
     public function user(){

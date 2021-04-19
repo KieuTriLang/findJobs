@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmployerRequest extends FormRequest
+class ResumeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,16 +26,22 @@ class EmployerRequest extends FormRequest
     public function rules()
     {
         return [
-             'company_name' => 'required|min:5|max:255',
-             'company_size' => 'required|min:5|max:255',
-            'tax' => 'required|min:5|max:255',
-            'website' => 'required|min:5|max:255',
-            'company_summary' => 'required|min:5|max:255',
-            'company_logo' => 'required|min:5|max:255',
-            'contact_name' => 'required|min:5|max:255',
-            'position' => 'required|min:5|max:255',
-            'company_address' => 'required|min:5|max:255',
-            'company_phone' => 'required|min:5|max:255',
+            'avatar_resume' => 'required|min:5|max:255',
+            'post_code' => 'required|min:5|max:255',
+            'cv_name' => 'required|min:5|max:255',
+            'name' => 'required|min:5|max:255',
+            'career_name' => 'required|min:5|max:255',
+            'email' => 'required|min:5|max:255',
+            'phone_num' => 'required|min:5|max:255',
+            'birthday' => 'required|min:5|max:255',
+            'address' => 'required|min:5|max:255',
+            'career_target' => 'required|min:5|max:255',
+            'work_exp' => 'required|min:5|max:255',
+            'education' => 'required|min:5|max:255',
+            'activities' => 'required|min:5|max:255',
+            'awards' => 'required|min:5|max:255',
+            'reference' => 'required|min:5|max:255',
+            'certificate' => 'required|min:5|max:255',
         ];
     }
 

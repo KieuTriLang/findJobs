@@ -1,5 +1,7 @@
 @extends('layouts.employee')
-
+<head>
+    <title>FindJobs - Đăng nhập</title>
+</head>
 @section('content')
 <div class="container-fluid row pb-5">
     <div class="col-11 col-md-6 offset-1 mt-5">

@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterControllerEE;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\PostJobController;
 use App\Http\Controllers\EmploymentController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\filterController;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
@@ -27,6 +28,10 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 
 Route::get('/', [HomeController::Class, 'employeeHome'])->name('employee.home');
 
+//Route::get('faq',[questionController::class,'employeeFaq'])->name('employee.faq');
+Route::get('FAQ', function () {
+    return view('employee/FAQ');
+  
 Route::group(['prefix' => 'find-job'], function () {
     Route::get('/', [EmploymentController::class, 'index'])->name('employee.findjob');
 

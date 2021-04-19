@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\QuestionRequest;
+use App\Http\Requests\LanguageRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class QuestionCrudController
+ * Class LanguageCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class QuestionCrudController extends CrudController
+class LanguageCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -20,10 +19,8 @@ class QuestionCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CloneOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CloneOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\BulkCloneOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\BulkDeleteOperation;
-    use CrudTrait;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -32,9 +29,9 @@ class QuestionCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Question::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/question');
-        CRUD::setEntityNameStrings('question', 'questions');
+        CRUD::setModel(\App\Models\Language::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/language');
+        CRUD::setEntityNameStrings('language', 'languages');
     }
 
     /**
@@ -46,8 +43,7 @@ class QuestionCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('id');
-        CRUD::column('question_html');
-        CRUD::column('answer_html');
+        CRUD::column('language_name');
         CRUD::column('created_at');
         CRUD::column('updated_at');
 
@@ -66,11 +62,10 @@ class QuestionCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(QuestionRequest::class);
+        CRUD::setValidation(LanguageRequest::class);
 
         CRUD::field('id');
-        CRUD::field('question_html');
-        CRUD::field('answer_html');
+        CRUD::field('language_name');
         CRUD::field('created_at');
         CRUD::field('updated_at');
 
