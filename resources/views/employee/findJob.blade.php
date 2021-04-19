@@ -137,6 +137,10 @@ function searchLink($string,$sChar){
     .item {
         overflow: hidden;
     }
+    .filter-box{
+        height: 200px;
+        overflow-y: auto;
+    }
 </style>
 
 <div class="container-fluid mt-5">
@@ -181,11 +185,11 @@ function searchLink($string,$sChar){
         <div class="col-12  col-sm-3 col-md-3 p-0 pt-1">
             <p class="bg-danger text-white text-center font-weight-bold py-3">BỘ LỌC KẾT QUẢ</p>
             <div class="">
-                <p class="my-3 text-danger font-weight-bold">ĐIỀU CHỈNH BỘ LỌC</p>
+                {{-- <p class="my-3 text-danger font-weight-bold">ĐIỀU CHỈNH BỘ LỌC</p>
                 <small class="bg-warning p-1 rounded">Hồ Chí Minh <a href="#" class="text-decoration-none text-dark"><i
-                            class="fas fa-minus ml-3"></i></a></small>
+                            class="fas fa-minus ml-3"></i></a></small> --}}
                 <div class="my-3 bg-danger text-light font-weight-bold p-2"><span>TỈNH / THÀNH PHỐ</span> </div>
-                <ul class="list-unstyled mx-2">
+                <ul class="list-unstyled mx-2 filter-box">
                     @foreach ($cities as $city)
                     <li class="border-bottom mt-1 d-flex justify-content-between"><a
                             href="{{ route("searchJob",searchLink($city->city_name,"dd-"))   }}"
@@ -193,7 +197,7 @@ function searchLink($string,$sChar){
                     @endforeach
                 </ul>
                 <p class="my-3 text-danger font-weight-bold">NGÀNH NGHỀ</p>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled mx-2 filter-box">
                     @foreach ($industries as $industry)
                     <li class="border-bottom mt-1 d-flex justify-content-between"><a
                             href="{{ route("searchJob",searchLink($industry->industry_name,"nn-"))   }}" class="text-dark">
@@ -201,7 +205,7 @@ function searchLink($string,$sChar){
                     @endforeach
                 </ul>
                 <p class="my-3 text-danger font-weight-bold">VỊ TRÍ</p>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled mx-2 filter-box">
                     @foreach ($hirePositions as $hirePosition)
                     <li class="border-bottom mt-1 d-flex justify-content-between"><a
                         href="{{ route("searchJob",searchLink($hirePosition->hire_position,"vt-"))   }}"
