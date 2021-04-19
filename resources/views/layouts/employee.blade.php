@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>FindJobs</title>
-    <link rel="shortcut icon" href="{{ asset('img/icon-findjobs.jpg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('company_logo/icon-findjobs.jpg') }}" type="image/x-icon">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

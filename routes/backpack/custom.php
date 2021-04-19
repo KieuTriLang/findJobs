@@ -31,5 +31,11 @@ Route::group([
     Route::crud('resume', 'ResumeCrudController');
     Route::crud('language', 'LanguageCrudController');
     Route::crud('hobbies', 'HobbiesCrudController');
-    Route::crud('citie', 'CitieCrudController');
+//    Route::crud('citie', 'CitieCrudController');
+    Route::crud('cities', 'CitiesCrudController');
+    Route::crud('jobs_resumes', 'Jobs_resumesCrudController');
+    Route::crud('employees', 'EmployeesCrudController');
+    Route::crud('company_sizes', 'Company_sizesCrudController');
+    Route::crud('bookmark_post_jobs', 'Bookmark_post_jobsCrudController');
+    Route::crud('hire_positions', 'Hire_positionsCrudController');
 }); // this should be the absolute last line of this file

@@ -16,4 +16,13 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('resume') }}'><i class='nav-icon las la-poll-h'></i> Resumes</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('language') }}'><i class='nav-icon las la-language'></i> Languages</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('hobbies') }}'><i class='nav-icon las la-thumbs-up'></i> Hobbies</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('citie') }}'><i class='nav-icon las la-city'></i> Cities</a></li>
+{{--<li class='nav-item'><a class='nav-link' href='{{ backpack_url('citie') }}'><i class='nav-icon las la-city'></i> Cities</a></li>--}}
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('cities') }}'><i class='nav-icon las la-city'></i> Cities</a></li>
+
+{{--<li class='nav-item'><a class='nav-link' href='{{ backpack_url('jobs_resumes') }}'><i class='nav-icon la la-question'></i> Jobs_resumes</a></li>--}}
+
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('employees') }}'><i class='nav-icon las la-user-tie'></i> Employees</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('company_sizes') }}'><i class='nav-icon lar la-building'></i> Company_sizes</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('bookmark_post_jobs') }}'><i class='nav-icon las la-chalkboard-teacher'></i> Bookmark_post_jobs</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('hire_positions') }}'><i class='nav-icon las la-id-card'></i> Hire_positions</a></li>
